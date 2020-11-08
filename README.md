@@ -25,6 +25,7 @@
 ### Association
 
 - belongs_to :user
+- has_many :answers
 - has_many :exam_questions
 - has_many :questions, through: exam_questions
 
@@ -32,7 +33,7 @@
 
 | Column                    | Type          | Options             |
 | ------------------------- | ------------- | ------------------- |
-| exam_id                 	|              	|                   	|
+| exam_id                 	| references   	| foreign_key: true 	|
 | question_id             	| references   	| foreign_key: true 	|
 
 ### Association
@@ -51,6 +52,7 @@
 ### Association
 
 - belongs_to :user
+- has_many :choices
 - has_many :exam_questions
 - has_many :exams, through: exam_questions
 
