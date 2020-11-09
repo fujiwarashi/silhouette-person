@@ -1,0 +1,216 @@
+/* リセットCSS */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+li,
+h1,
+h2,
+p,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
+  color: #3b4043;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #3b4043;
+}
+
+/* ヘッダー */
+
+.header {
+  background-color: white;
+  margin-bottom: 48px;
+  padding: 10px 0;
+  border-bottom: 1px #cccccc solid;
+}
+.inner {
+  width: 100vw;
+  margin: 0 auto;
+}
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  width: 330px;
+  margin-left: 20px;
+}
+.nav__right__top {
+  display: flex;
+  justify-content: space-between;
+}
+.nav__right__bottom {
+  display: flex;
+  margin-top: 20px;
+}
+.icon {
+  height: 30px;
+  margin: auto;
+}
+.nav__link {
+  margin-right: 30px;
+}
+.nav__btn{
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #776ed2;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #776ed2 solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin: 5px 10px 0 0;
+}
+.nav__btn:hover{
+  color: white;
+  background: #776ed2;
+}
+.nav__logout{
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: #776ed2;
+  text-decoration: none;
+  user-select: none;
+}
+.nav__logout:hover{
+  opacity: 0.5;
+}
+
+/* メイン */
+
+.main__home {
+  text-align: center;
+}
+.main__image {
+  width: 1024px;
+}
+.heading {
+  color: #776ed2;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+.infomation__main {
+  text-align: center;
+}
+.service {
+  text-align: center;
+}
+.service__image {
+  width: 1024px;
+}
+.service__info {
+  display: flex;
+  justify-content: center;
+}
+.service__info__image {
+  width: 512px;
+}
+
+
+
+/* フッター */
+
+.footer {
+  background-color: #776ed2;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.logo__white {
+  width: 200px;
+}
+.copyright {
+  text-align: center;
+  color: white;
+  font-size: 10px;
+}
+
+/* タブレット対応 */
+@media (max-width: 1024px) {
+  .logo {
+    width: 230px;
+  }
+  .nav__link {
+    font-size: 11px;
+  }
+  .nav__btn{
+    height: auto;
+    font-size: 11px;
+  }
+  .inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .page-heading {
+    font-size: 24px;
+  }
+  .card {
+    width: 48%;
+    margin-bottom: 40px;
+  }
+  .prototype_image{
+    width: 60%;
+  }
+}
+
+ /* スマホ表示 */
+@media (max-width: 599px) {
+  .logo {
+    width: 120px;
+  }
+  .icon {
+    height: 20px;
+  }
+  .heading {
+    font-size: 15px;
+  }
+  .nav__link {
+    font-size: 11px;
+  }
+  .nav__btn{
+    height: auto;
+    font-size: 11px;
+  }
+  .page-heading {
+    font-size: 20px;
+  }
+  .card {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+  .card__title {
+    font-size: 18px;
+  }
+  .card__summary {
+    font-size: 14px;
+  }
+  .prototype_image{
+    width: 100%;
+  }
+  .table{
+    width: 100%;
+  }
+}

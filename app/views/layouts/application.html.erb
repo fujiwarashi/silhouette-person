@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SilhouettePerson</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
   </head>
 
   <body>
+    <header class="header">
+      <div class="inner">
+        <div class="nav">
+          <div class="nav__left">
+            <%= link_to image_tag("logo.png", class: :logo), root_path %>
+          </div>
+            <div class="nav__right">
+              <div class="nav__right__top">
+                <div class="nav__right__top__left">
+                  <%= link_to image_tag("yt_icon_rgb.png", class: :icon), root_path %>
+                  <%= link_to image_tag("Twitter_Social_Icon_Rounded_Square_Color.png", class: :icon), root_path %>
+                  <%= link_to image_tag("LINE_APP.png", class: :icon), root_path %>
+                  <%= link_to image_tag("f_logo_RGB-Hex-Blue_512.png", class: :icon), root_path %>
+                </div>
+                <div class="nav__right__top__right">
+              <%# <% if user_signed_in? %>
+              <%# <%= link_to "ログアウト", root_path, class: :nav__logout %>
+              <%# <%= link_to "新規投稿", root_path, class: :nav__btn %>
+              <%# <% end %>
+                  <%= link_to "ログイン", root_path, class: :nav__btn %>
+                  <%= link_to "新規登録", root_path, class: :nav__btn %>
+                </div>
+              </div>
+              <ul class="nav__right__bottom">
+                <li><%= link_to "サービス", root_path, class: :nav__link %></li>
+                <li><%= link_to "コラム", root_path, class: :nav__link %></li>
+                <li><%= link_to "お知らせ", root_path, class: :nav__link %></li>
+                <li><%= link_to "お問い合わせ", root_path, class: :nav__link %></li>
+            </ul>
+          <%# // ログインしていないときは上記を表示するようにしましょう %>
+        </div>
+      </div>
+    </header>
     <%= yield %>
+    <footer class="footer">
+      <div class="footer.logo">
+        <%= link_to image_tag("logo.white.jpeg", class: :logo__white), root_path %>
+      </div>
+      <p class="copyright">Copyright © YF-21 2020/2021</p>
+    </footer>
   </body>
 </html>
