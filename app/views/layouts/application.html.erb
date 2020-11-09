@@ -32,7 +32,7 @@
               <%# <%= link_to "新規投稿", root_path, class: :nav__btn %>
               <%# <% end %>
                   <%= link_to "ログイン", root_path, class: :nav__btn %>
-                  <%= link_to "新規登録", root_path, class: :nav__btn %>
+                  <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
                 </div>
               </div>
               <ul class="nav__right__bottom">
@@ -41,7 +41,6 @@
                 <li><%= link_to "お知らせ", root_path, class: :nav__link %></li>
                 <li><%= link_to "お問い合わせ", root_path, class: :nav__link %></li>
             </ul>
-          <%# // ログインしていないときは上記を表示するようにしましょう %>
         </div>
       </div>
     </header>
