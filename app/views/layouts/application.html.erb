@@ -27,12 +27,13 @@
                   <%= link_to image_tag("f_logo_RGB-Hex-Blue_512.png", class: :icon), root_path %>
                 </div>
                 <div class="nav__right__top__right">
-              <%# <% if user_signed_in? %>
-              <%# <%= link_to "ログアウト", root_path, class: :nav__logout %>
-              <%# <%= link_to "新規投稿", root_path, class: :nav__btn %>
-              <%# <% end %>
-                  <%= link_to "ログイン", root_path, class: :nav__btn %>
-                  <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+                  <% if user_signed_in? %>
+                    <%= link_to "試験作成", root_path, class: :nav__btn %>
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
+                  <% else %>
+                    <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+                    <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+                  <% end %>
                 </div>
               </div>
               <ul class="nav__right__bottom">
