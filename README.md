@@ -12,7 +12,7 @@
 
 - has_many :exams
 - has_many :questions
-- has_many :answers
+- has_many :results
 
 ## exams テーブル
 
@@ -25,7 +25,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :answers
+- has_many :results
 - has_many :exam_questions
 - has_many :questions, through: exam_questions
 
@@ -67,22 +67,22 @@
 ### Association
 
 - belongs_to :question
-- has_many :answer_choices
-- has_many :answers, through: answer_choices
+- has_many :result_choices
+- has_many :results, through: result_choices
 
-## answer_choices テーブル
+## result_choices テーブル
 
 | Column                    | Type          | Options             |
 | ------------------------- | ------------- | ------------------- |
-| answer_id               	| references   	| foreign_key: true 	|
+| result_id               	| references   	| foreign_key: true 	|
 | choice_id               	| references   	| foreign_key: true 	|
 
 ### Association
 
 - belongs_to :choice
-- belongs_to :answer
+- belongs_to :result
 
-## answers テーブル
+## results テーブル
 
 | Column                    | Type          | Options             |
 | ------------------------- | ------------- | ------------------- |
@@ -93,5 +93,5 @@
 
 - belongs_to :user
 - belongs_to :exam
-- has_many :answer_choices
-- has_many :choices, through: answer_choices
+- has_many :result_choices
+- has_many :choices, through: result_choices
