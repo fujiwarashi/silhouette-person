@@ -27,7 +27,7 @@
 - belongs_to :user
 - has_many :results
 - has_many :exam_questions
-- has_many :questions, through: exam_questions
+- has_many :questions, through: :exam_questions
 
 ## exam_questions テーブル
 
@@ -54,7 +54,7 @@
 - belongs_to :user
 - has_many :choices
 - has_many :exam_questions
-- has_many :exams, through: exam_questions
+- has_many :exams, through: :exam_questions
 
 ## choices テーブル
 
@@ -68,7 +68,7 @@
 
 - belongs_to :question
 - has_many :result_choices
-- has_many :results, through: result_choices
+- has_many :results, through: :result_choices
 
 ## result_choices テーブル
 
@@ -94,4 +94,4 @@
 - belongs_to :user
 - belongs_to :exam
 - has_many :result_choices
-- has_many :choices, through: result_choices
+- has_many :choices, through: :result_choices

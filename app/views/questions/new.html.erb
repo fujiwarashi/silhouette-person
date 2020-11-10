@@ -1,0 +1,59 @@
+<div class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"question.png", class: :image__header__image %><br><br>
+      <h2 class="heading">新規問題作成</h2><br>
+        <div class="form__wrapper">
+        <%= form_with(model:@question_choice, url: exam_questions_path, local: true) do |f| %>
+        <div class="img-upload">
+          <div class="click-upload">
+            <p>▼画像が必要な場合のみ投稿して下さい</p>
+            <%= f.file_field :image, id:"question-image" %><br><br>
+          </div>
+        </div>
+        <div class="new-question">
+      <div class="weight-bold-text">
+        問題文
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :content, class:"question__content", id:"question_content", placeholder:"例:) 2019年に新しくなった年号は？", rows:"5", cols:"70", maxlength:"1000" %>
+      <div class="new-question">
+        <div class="weight-bold-text">
+          選択肢
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text1", placeholder:"例:)大正", cols:"40" ,maxlength:"250" %>
+        <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer1"}) %>
+      </div>
+      <div class="new-question">
+        <div class="weight-bold-text">
+          選択肢
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text2", placeholder:"例:)昭和", cols:"40" ,maxlength:"250" %>
+        <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer2"}) %>
+      </div>
+      <div class="new-question">
+        <div class="weight-bold-text">
+          選択肢
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text3", placeholder:"例:)平成", cols:"40" ,maxlength:"250" %>
+        <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer3"}) %>
+      </div>
+      <div class="new-question">
+        <div class="weight-bold-text">
+          選択肢
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text4", placeholder:"例:)令和", cols:"40" ,maxlength:"250" %>
+        <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer4"}) %>
+      </div>
+          <div class="sell-btn-contents">
+      <%= f.submit "作成する" ,class: :nav__btn %>
+      <%=link_to 'もどる', root_path, class: :nav__logout%>
+    </div>
+        <% end %>
+    </div>
+  </div>
+</div>
