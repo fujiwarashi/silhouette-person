@@ -11,6 +11,7 @@ class ExamsController < ApplicationController
   def show
     @exam = Exam.find(params[:id])
     @exam_question = ExamQuestion.find(params[:id])
+    @question = Question.find(params[:id])
     @choice = Choice.find(params[:id])
   end
 

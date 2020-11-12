@@ -21,7 +21,6 @@
                   </li>
                 </ul>
                 <% Choice.all.each do |cho| %>
-                <%# where(id: @choice.question_id) %>
                   <ul class="choice__lists fadeIn">
                     <li class="choice__list">
                       <strong><%= cho.text %></strong>
