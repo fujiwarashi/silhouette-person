@@ -1,0 +1,49 @@
+<div class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"exam.png", class: :image__header__image %><br><br>
+      <h2 class="heading">新規試験作成</h2><br>
+      <div class="form__wrapper">
+      <%# <%= form_with(model:@exam, url: new_exam_path, local: true) do |f| %>
+      <%# <% end %>
+      <%= form_with model: @exam, url: exams_path(:exam_id) do |f| %>
+        <div class="weight-bold-text">
+          試験に名前をつけて下さい
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :title, class:"choice__text", id:"question_content", placeholder:"例:) 試験問題", rows:"1", cols:"50", maxlength:"255" %>
+        <div class="new-question">
+        <div class="weight-bold-text">
+          試験の説明文を入力して下さい
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :message, class:"choice__text", id:"question_content", placeholder:"例:) 注意事項", rows:"5", cols:"70", maxlength:"1024" %>
+        <div class="new-question">
+
+        <br>作成した問題の中から試験に使用するものを選択して下さい<br>
+        <% if Question.exists?(user_id: current_user.id) %>
+          <select name="exam[question_ids][]">
+            <option value="">--問題を選択して下さい--</option>
+            <% Question.where(user_id: current_user.id).each do |que| %>
+              <option value=<%= que.id %>><%= que.content %></option>
+            <% end %>
+          </select>
+          <%# <input name="exam[question_ids][]" type="hidden" value=<%= que.id %> %>
+
+          <%# <%= f.select :user_id, @question.map{ |i| ["#{i.content}", i.id]}, { include_blank: true }, {id: "l_category"} %>
+          <%# <% binding.pry %>
+          <%# <%= form.collection_check_boxes(question_ids, @question, :id, :content ) %>
+          <%# <%= form.collection_check_boxes(保存されるカラム名, オブジェクトの配列, カラムに保存される項目, チェックボックスに表示されるカラム名 ) %>
+            <div class="sell-btn-contents">
+              <%= f.submit "作成する" ,class: :nav__btn %>
+              <%=link_to 'もどる', root_path, class: :nav__logout %>
+            </div>
+          <% else %><br>
+            <h2 class="heading">※先に問題を作成して下さい</h2>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

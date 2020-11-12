@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     if @question_choice.save
       redirect_to root_path
     else
-      render action: :new
+      redirect_to action: :new
     end
   end
 

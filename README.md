@@ -18,8 +18,8 @@
 
 | Column                    | Type          | Options             |
 | ------------------------- | ------------- | ------------------- |
-| open_id                 	| integer      	| NOT NULL          	|
-| encrypted_password      	| string       	|                   	|
+| title                   	| string      	| NOT NULL          	|
+| message                 	| text        	| NOT NULL          	|
 | user_id                 	| references   	| foreign_key: true 	|
 
 ### Association

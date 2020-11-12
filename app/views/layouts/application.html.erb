@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src=“https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js”></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700,900&display=swap" rel="stylesheet">
   </head>
 
@@ -21,13 +22,10 @@
             <div class="nav__right">
               <div class="nav__right__top">
                 <div class="nav__right__top__left">
-                  <%= link_to image_tag("yt_icon_rgb.png", class: :icon), root_path %>
-                  <%= link_to image_tag("Twitter_Social_Icon_Rounded_Square_Color.png", class: :icon), root_path %>
-                  <%= link_to image_tag("LINE_APP.png", class: :icon), root_path %>
-                  <%= link_to image_tag("f_logo_RGB-Hex-Blue_512.png", class: :icon), root_path %>
                 </div>
                 <div class="nav__right__top__right">
                   <% if user_signed_in? %>
+                    <%= link_to "試験作成", new_exam_path(:exam_id), class: :nav__btn %>
                     <%= link_to "問題作成", new_exam_question_path(:exam_id), class: :nav__btn %>
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
                   <% else %>
@@ -47,6 +45,10 @@
     </header>
     <%= yield %>
     <footer class="footer">
+      <%= link_to image_tag("yt_icon_rgb.png", class: :icon), root_path %>
+      <%= link_to image_tag("Twitter_Social_Icon_Rounded_Square_Color.png", class: :icon), root_path %>
+      <%= link_to image_tag("LINE_APP.png", class: :icon), root_path %>
+      <%= link_to image_tag("f_logo_RGB-Hex-Blue_512.png", class: :icon), root_path %>
       <div class="footer.logo">
         <%= link_to image_tag("logo.white.jpeg", class: :logo__white), root_path %>
       </div>

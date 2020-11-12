@@ -1,0 +1,46 @@
+<main class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"exam.main.png", class: :image__header__image %><br><br>
+      <p class="heading">
+        <%= @exam.title %>
+      </p>
+      <div class="exam__body">
+        <div class="prototype__detail"><br>
+          <p class="infomation__main">- 問題説明 -</p>
+          <p class="exam__message">
+            <%= @exam.message %>
+          </p>
+        </div>
+        <% if user_signed_in? %>
+          <%= form_with model: @exam, local: true do |f| %>
+              <% Question.where(id: @exam_question.question_id).each do |text| %>
+                <ul class="question__lists fadeIn">
+                  <li class="question__list">
+                    <strong><%= text.content %></strong>
+                  </li>
+                </ul>
+                <% Choice.all.each do |cho| %>
+                <%# where(id: @choice.question_id) %>
+                  <ul class="choice__lists fadeIn">
+                    <li class="choice__list">
+                      <strong><%= cho.text %></strong>
+                    </li>
+                  </ul>
+                <% end %>
+              <% end %>
+            <div class="actions">
+            <br>
+            <br>
+              <%= f.submit "送信する", class: :nav__btn %>
+              <%=link_to 'もどる', root_path, class: :nav__logout%><br><br>
+            </div>
+          <% end %>
+        <% else %><br>
+          <p class="heading">※試験を始めるにはログインをして下さい</p><br>
+        <% end%>
+        <%# // ログインしているユーザーには上記を表示する %>
+      </div>
+    </div>
+  </div>
+</main>

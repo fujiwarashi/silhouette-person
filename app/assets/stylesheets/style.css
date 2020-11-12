@@ -115,6 +115,17 @@ a {
 .infomation__main {
   text-align: center;
 }
+
+.fadeIn {
+  transform: translate3d(0, -10px, 0);
+  transition: 2s;
+  opacity: 0;
+}
+
+.fadeIn.animated {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
 .service {
   text-align: center;
 }
@@ -127,6 +138,77 @@ a {
 }
 .service__info__image {
   width: 512px;
+}
+
+.exam__index {
+  display: grid;
+  justify-content: center;
+}
+
+.exam__btn{
+  display: inline-block;
+  padding: 0.7em 1.9em;
+  font-size: 1.5em;
+  color: #776ed2;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #776ed2 solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin: 10px;
+  width: 700px;
+}
+.exam__btn:hover{
+  color: white;
+  background: #776ed2;
+}
+
+/* 試験 */
+.exam__message {
+  text-align: center;
+  padding: 0.4em 1.6em;
+  font-size: 1.2em;
+  color: #776ed2;
+  text-decoration: none;
+  user-select: none;
+  border: #776ed2 1px solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin: 0 200px;
+}
+
+.question__lists {
+  text-align: center;
+  margin: 350px 20px 20px;
+}
+
+.question__list {
+  text-align: center;
+  padding: 0.4em 1.6em;
+  font-size: 1.6em;
+  background-color: #776ed2;
+  color: white;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #776ed2 solid;
+  border-radius: 3px;
+  margin: 20px;
+}
+
+.choice__lists {
+  text-align: center;
+}
+
+.choice__list {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 1.6em;
+  color: #776ed2;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #776ed2 solid;
+  border-radius: 3px;
+  margin: 2px;
 }
 
 /* フォーム周り */
@@ -175,6 +257,19 @@ a {
   cursor: pointer;
 }
 
+.indispensable {
+  background-color: #776ed2;
+  color: white;
+  font-size: 6px;
+  border-radius: 3px;
+  padding: 1px;
+}
+.choice__text {
+  transition: 0.5s;
+  border: 2px solid #aaa;
+  border-radius: 3px;
+}
+
 /* フッター */
 
 .footer {
@@ -211,12 +306,23 @@ a {
   .page-heading {
     font-size: 24px;
   }
-  .card {
-    width: 48%;
-    margin-bottom: 40px;
+  .exam__message {
+    font-size: 0.8em;
+    margin: 0 10px;
   }
-  .prototype_image{
-    width: 60%;
+  
+  .question__lists {
+    font-size: 0.8em;
+    margin: 100px 0 10px;
+  }
+  
+  .choice__list {
+    font-size: 1.5em;
+  }
+  .exam__btn{
+  font-size: 1.2em;
+  margin: 5px;
+  width: 500px;
   }
 }
 
@@ -241,20 +347,23 @@ a {
   .page-heading {
     font-size: 20px;
   }
-  .card {
-    width: 100%;
-    margin-bottom: 60px;
+
+  .exam__message {
+    font-size: 0.6em;
+    margin: 0 5px;
   }
-  .card__title {
-    font-size: 18px;
+  
+  .question__lists {
+    font-size: 0.5em;
+    margin: 100px 0 5px;
   }
-  .card__summary {
-    font-size: 14px;
+  
+  .choice__list {
+    font-size: 0.9em;
   }
-  .prototype_image{
-    width: 100%;
-  }
-  .table{
-    width: 100%;
+  .exam__btn{
+  font-size: 0.8em;
+  margin: 3px;
+  width: 400px;
   }
 }

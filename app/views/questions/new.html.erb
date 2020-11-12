@@ -16,44 +16,45 @@
         問題文
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :content, class:"question__content", id:"question_content", placeholder:"例:) 2019年に新しくなった年号は？", rows:"5", cols:"70", maxlength:"1000" %>
+      <%= f.text_area :content, class:"choice__text", id:"question_content", placeholder:"例:) 2019年に新しくなった年号は？", rows:"5", cols:"70", maxlength:"255" %>
       <div class="new-question">
         <div class="weight-bold-text">
-          選択肢
+          選択肢A
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text1", placeholder:"例:)大正", cols:"40" ,maxlength:"250" %>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text1", placeholder:"例:)大正", cols:"40" ,maxlength:"255" %>
         <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer1"}) %>
       </div>
       <div class="new-question">
         <div class="weight-bold-text">
-          選択肢
+          選択肢B
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text2", placeholder:"例:)昭和", cols:"40" ,maxlength:"250" %>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text2", placeholder:"例:)昭和", cols:"40" ,maxlength:"255" %>
         <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer2"}) %>
       </div>
       <div class="new-question">
         <div class="weight-bold-text">
-          選択肢
+          選択肢C
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text3", placeholder:"例:)平成", cols:"40" ,maxlength:"250" %>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text3", placeholder:"例:)平成", cols:"40" ,maxlength:"255" %>
         <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer3"}) %>
       </div>
       <div class="new-question">
         <div class="weight-bold-text">
-          選択肢
+          選択肢D
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text4", placeholder:"例:)令和", cols:"40" ,maxlength:"250" %>
+        <%= f.text_area "text[][tex]", class:"choice__text", id:"choice_text4", placeholder:"例:)令和", cols:"40" ,maxlength:"255" %>
         <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class:"answer", id:"answer4"}) %>
       </div>
-          <div class="sell-btn-contents">
-      <%= f.submit "作成する" ,class: :nav__btn %>
-      <%=link_to 'もどる', root_path, class: :nav__logout%>
-    </div>
-        <% end %>
+      <div class="sell-btn-contents">
+        <%= f.submit "作成する" ,class: :nav__btn %>
+        <%=link_to 'もどる', root_path, class: :nav__logout%>
+      </div>
+      <% end %>
+      <br>
     </div>
   </div>
 </div>

@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2020_11_09_155451) do
   end
 
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "open_id", null: false
-    t.string "password", null: false
+    t.string "title", null: false
+    t.text "message", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
