@@ -34,6 +34,10 @@ a {
   color: #3b4043;
 }
 
+.field_with_errors {
+  display: contents;
+}
+
 /* ヘッダー */
 
 .header {
@@ -65,6 +69,10 @@ a {
 }
 .icon {
   height: 30px;
+  margin: auto;
+}
+.icon__sign {
+  height: 25px;
   margin: auto;
 }
 .nav__link {
@@ -286,7 +294,27 @@ a {
   border-radius: 3px;
 }
 
+
 /* フッター */
+
+.footer__sub {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.nav__link__mini {
+  color: #776ed2;
+  margin: 10px;
+  display: inline-block;
+  font-size: 0.8em;
+  color: #776ed2;
+  text-decoration: none;
+  user-select: none;
+}
+.nav__link__mini:hover{
+  opacity: 0.5;
+}
 
 .footer {
   background-color: #776ed2;

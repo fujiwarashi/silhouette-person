@@ -13,20 +13,23 @@
           </p>
         </div>
         <% if user_signed_in? %>
-          <%= form_with model: @exam, local: true do |f| %>
-              <% Question.where(id: @exam_question.question_id).each do |text| %>
+          <%= form_with model: @result, url:exam_results_path(params[:id]), local: true do |f| %>
+              <% @exam_questions.each do |exam| %>
                 <ul class="question__lists fadeIn">
                   <li class="question__list">
-                    <strong><%= text.content %></strong>
+                    <strong><%= exam.question.content %></strong>
                   </li>
                 </ul>
-                <% Choice.all.each do |cho| %>
                   <ul class="choice__lists fadeIn">
                     <li class="choice__list">
-                      <strong><%= cho.text %></strong>
+                      <%# <% binding.pry %>
+                      <%# <%= f.collection_check_boxes :question_ids, Question.where(user_id: current_user.id), :id, :content %>
+                      <%= f.collection_check_boxes :choice_ids, exam.question.choices, :id, :text %>
+                      <%# <% exam.question.choices.each do |tex| %>
+                      <%# <%= tex.text %>
+                      <%# <% end %>
                     </li>
                   </ul>
-                <% end %>
               <% end %>
             <div class="actions">
             <br>
@@ -38,7 +41,6 @@
         <% else %><br>
           <p class="heading">※試験を始めるにはログインをして下さい</p><br>
         <% end%>
-        <%# // ログインしているユーザーには上記を表示する %>
       </div>
     </div>
   </div>

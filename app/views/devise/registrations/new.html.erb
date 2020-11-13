@@ -5,27 +5,32 @@
       <h2 class="heading">ユーザー新規登録</h2><br>
         <div class="form__wrapper">
           <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+          <%= render 'devise/shared/error_messages', model: f.object %>
           <div class="field">
             <%= f.label :name, "ユーザー名・法人名" %><br />
-            <%= f.text_field :name %>
+            <%= image_tag("mail.png", class: :icon__sign) %>
+            <%= f.text_field :name, placeholder:"例:) 田中太郎"%>
           </div>
           <div class="field">
             <%= f.label :email, "メールアドレス" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= image_tag("mail.png", class: :icon__sign) %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"例:) test@mail.com"%>
           </div>
           <div class="field">
-            <%= f.label :password, "パスワード（6文字以上）" %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.label :password, "パスワード" %><br />
+            <%= image_tag("password.png", class: :icon__sign) %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder:"例:) abc123" %>
           </div>
           <div class="field">
             <%= f.label :password_confirmation, "パスワード再入力" %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= image_tag("password.png", class: :icon__sign) %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"例:) abc123"%>
           </div>
           <div class="actions">
             <%= f.submit "新規登録", class: :form__btn  %>
           </div>
-      <% end %>
-      </div>
+        <% end %>
+        </div>
     </div>
   </div>
 </div>

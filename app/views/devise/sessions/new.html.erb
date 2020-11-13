@@ -5,6 +5,7 @@
       <h2 class="heading">ユーザーログイン</h2><br>
       <div class="form__wrapper"> 
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <%= render 'devise/shared/error_messages', model: f.object %>
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

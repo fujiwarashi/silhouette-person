@@ -4,13 +4,14 @@
       <%= image_tag"question.png", class: :image__header__image %><br><br>
       <h2 class="heading">新規問題作成</h2><br>
         <div class="form__wrapper">
-        <%= form_with(model:@question_choice, url: exam_questions_path, local: true) do |f| %>
-        <div class="img-upload">
-          <div class="click-upload">
-            <p>▼画像が必要な場合のみ投稿して下さい</p>
-            <%= f.file_field :image, id:"question-image" %><br><br>
-          </div>
-        </div>
+        <%= form_with(model:@question_choice, url: exam_questions_path, method: :post, local: true) do |f| %>
+        <%= render 'devise/shared/error_messages', model: f.object %>
+        <%# <div class="img-upload"> %>
+          <%# <div class="click-upload"> %>
+            <%# <p>▼画像が必要な場合のみ投稿して下さい</p> %>
+            <%# <%= f.file_field :image, id:"question-image" %>
+          <%# </div> %>
+        <%# </div> %>
         <div class="new-question">
       <div class="weight-bold-text">
         問題文

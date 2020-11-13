@@ -4,7 +4,9 @@
       <%= image_tag"exam.png", class: :image__header__image %><br><br>
       <h2 class="heading">新規試験作成</h2><br>
       <div class="form__wrapper">
+
       <%= form_with model: @exam, url: exams_path(:exam_id) do |f| %>
+      <%= render 'devise/shared/error_messages', model: f.object %>
         <div class="weight-bold-text">
           試験に名前をつけて下さい
           <span class="indispensable">必須</span>
@@ -24,7 +26,7 @@
             <%= f.collection_check_boxes :question_ids, Question.where(user_id: current_user.id), :id, :content %>
           </div>
             <div class="sell-btn-contents">
-              <%= f.submit "作成する" ,class: :nav__btn %>
+              <%= f.submit "作成する", class: :nav__btn %>
               <%=link_to 'もどる', root_path, class: :nav__logout %>
             </div>
           <% else %><br>

@@ -36,15 +36,15 @@ ActiveRecord::Schema.define(version: 2020_11_12_091838) do
   create_table "choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "text", null: false
     t.integer "answer_id", null: false
-    t.bigint "question_id"
+    t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_choices_on_question_id"
   end
 
   create_table "exam_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "exam_id"
-    t.bigint "question_id"
+    t.bigint "exam_id", null: false
+    t.bigint "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exam_id"], name: "index_exam_questions_on_exam_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_091838) do
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "message", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_exams_on_user_id"
@@ -62,24 +62,24 @@ ActiveRecord::Schema.define(version: 2020_11_12_091838) do
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "result_choices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "result_id"
-    t.bigint "user_id"
+    t.bigint "result_id", null: false
+    t.bigint "choice_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["choice_id"], name: "index_result_choices_on_choice_id"
     t.index ["result_id"], name: "index_result_choices_on_result_id"
-    t.index ["user_id"], name: "index_result_choices_on_user_id"
   end
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "exam_id"
+    t.bigint "user_id", null: false
+    t.bigint "exam_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exam_id"], name: "index_results_on_exam_id"
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2020_11_12_091838) do
   add_foreign_key "exam_questions", "questions"
   add_foreign_key "exams", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "result_choices", "choices"
   add_foreign_key "result_choices", "results"
-  add_foreign_key "result_choices", "users"
   add_foreign_key "results", "exams"
   add_foreign_key "results", "users"
 end

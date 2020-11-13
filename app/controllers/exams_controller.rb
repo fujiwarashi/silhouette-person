@@ -1,6 +1,6 @@
 class ExamsController < ApplicationController
   def index
-    @exams = Exam.all
+    @exams = Exam.all.order(id: "DESC")
   end
 
   def new
@@ -10,9 +10,9 @@ class ExamsController < ApplicationController
 
   def show
     @exam = Exam.find(params[:id])
-    @exam_question = ExamQuestion.find(params[:id])
-    @question = Question.find(params[:id])
-    @choice = Choice.find(params[:id])
+    @exam_questions = ExamQuestion.where(exam_id: @exam.id)
+    @result = Result.new
+    @result_choice = ResultChoice.new
   end
 
   def create
