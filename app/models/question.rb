@@ -3,5 +3,6 @@ class Question < ApplicationRecord
   has_many :choices, dependent: :destroy
   has_many :exam_questions
   has_many :exams, through: :exam_questions
-  has_one_attached :image
+  # has_one_attached :image
+  
 end

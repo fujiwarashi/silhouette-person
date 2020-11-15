@@ -7,24 +7,28 @@
           <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
           <%= render 'devise/shared/error_messages', model: f.object %>
           <div class="field">
-            <%= f.label :name, "ユーザー名・法人名" %><br />
-            <%= image_tag("mail.png", class: :icon__sign) %>
-            <%= f.text_field :name, placeholder:"例:) 田中太郎"%>
+            <span class="indispensable__new">必須</span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: :ef, :size=>"50" %>
+            <%= f.label :email, "メールアドレス"%><br />
+            <span class="focus_line"></span>
           </div>
           <div class="field">
-            <%= f.label :email, "メールアドレス" %><br />
-            <%= image_tag("mail.png", class: :icon__sign) %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"例:) test@mail.com"%>
+            <span class="indispensable__new">必須</span>
+            <%= f.text_field :name, class: :ef, :size=>"50" %>
+            <%= f.label :name, "登録名・法人名" %><br />
+            <span class="focus_line"></span>
           </div>
           <div class="field">
+            <span class="indispensable__new">必須</span>
+            <%= f.password_field :password, autocomplete: "new-password", class: :ef, :size=>"50" %>
             <%= f.label :password, "パスワード" %><br />
-            <%= image_tag("password.png", class: :icon__sign) %>
-            <%= f.password_field :password, autocomplete: "new-password", placeholder:"例:) abc123" %>
+            <span class="focus_line"></span>
           </div>
           <div class="field">
+            <span class="indispensable__new">必須</span>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: :ef, :size=>"50" %>
             <%= f.label :password_confirmation, "パスワード再入力" %><br />
-            <%= image_tag("password.png", class: :icon__sign) %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"例:) abc123"%>
+            <span class="focus_line"></span>
           </div>
           <div class="actions">
             <%= f.submit "新規登録", class: :form__btn  %>

@@ -1,0 +1,46 @@
+<main class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"exam.main.png", class: :image__header__image %><br><br>
+      <p class="heading">
+        <%= @exam.title %>
+      </p>
+      <div class="exam__body">
+        <div class="prototype__detail"><br>
+          <p class="infomation__main">- 解答ページ -</p>
+          <p class="exam__message">
+            <%= @exam.message %>
+          </p>
+        </div>
+        <% if user_signed_in? %>
+          <%= form_with model: @result, url:exam_results_path(params[:id]), local: true do |f| %>
+              <% @exam_questions.each do |exam| %>
+                <ul class="question__lists fadeIn">
+                  <li class="question__list">
+                    <strong><%= exam.question.content %></strong>
+                  </li>
+                </ul>
+                  <ul class="choice__lists fadeIn">
+                    <li class="choice__list">
+                      <%# <% binding.pry %>
+                      <%# <%= f.collection_check_boxes :question_ids, Question.where(user_id: current_user.id), :id, :content %>
+                      <%= f.collection_check_boxes :choice_ids, exam.question.choices, :id, :text %>
+                      <%# <% exam.question.choices.each do |tex| %>
+                      <%# <%= tex.text %>
+                      <%# <% end %>
+                    </li>
+                  </ul>
+              <% end %>
+            <div class="actions">
+            <br>
+            <br>
+              <%=link_to 'もどる', root_path, class: :nav__logout%><br><br>
+            </div>
+          <% end %>
+        <% else %><br>
+          <p class="heading">ログインをして下さい</p><br>
+        <% end%>
+      </div>
+    </div>
+  </div>
+</main>

@@ -6,10 +6,13 @@ class QuestionsController < ApplicationController
   def create
     @question_choice = QuestionChoice.new(question_params)
     if @question_choice.save
-      redirect_to root_path
+      redirect_to :new
     else
-      redirect_to action: :new
+      render :new
     end
+  end
+
+  def destroy
   end
 
   private

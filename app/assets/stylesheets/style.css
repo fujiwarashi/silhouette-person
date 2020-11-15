@@ -34,9 +34,156 @@ a {
   color: #3b4043;
 }
 
+/* 共通部分 */
+
+.form__wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 .field_with_errors {
   display: contents;
 }
+
+.error-message {
+  font-weight: bold;
+  color: red;
+}
+
+.field {
+	position: relative;
+  margin: 50px 20px;
+}
+
+.ef {
+	padding: 4px 0 4px 135px;
+	border: 0;
+	border-bottom: 1px solid #776ed2;
+	background-color: transparent;
+}
+
+.ef ~ label {
+	position: absolute;
+  top: 4px;
+  text-align: left;
+  z-index: -1;
+	left: 25px;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+  color: #aaaaaa;
+}
+.ef:focus ~ label,
+.field.ef ~ label {
+	font-size: 12px;
+	top: -22px;
+	transition: 0.3s;
+	color: #776ed2;
+}
+
+.ef__exam {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid #776ed2;
+	background-color: transparent;
+}
+
+.ef__exam ~ label {
+	position: absolute;
+  top: 4px;
+  text-align: center;
+  z-index: -1;
+	left: 25px;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+  color: #aaaaaa;
+}
+.ef__exam:focus ~ label,
+.field.ef__exam ~ label {
+	font-size: 12px;
+	top: -22px;
+	transition: 0.3s;
+	color: #776ed2;
+}
+
+.ef__exam {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid #776ed2;
+	background-color: transparent;
+}
+
+.ef__exam ~ label {
+	position: absolute;
+  top: 4px;
+  text-align: center;
+  z-index: -1;
+	left: 25px;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+  color: #aaaaaa;
+}
+.ef__exam:focus ~ label,
+.field.ef__exam ~ label {
+	font-size: 12px;
+	top: -22px;
+	transition: 0.3s;
+	color: #776ed2;
+}
+.ef__exam {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid #776ed2;
+	background-color: transparent;
+}
+
+.ef__exam ~ label {
+	position: absolute;
+  top: 4px;
+  text-align: center;
+  z-index: -1;
+	left: 25px;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+  color: #aaaaaa;
+}
+.ef__exam:focus ~ label,
+.field.ef__exam ~ label {
+	font-size: 12px;
+	top: -22px;
+	transition: 0.3s;
+	color: #776ed2;
+}
+
+.ef__question {
+	padding: 4px 0 4px 50px;
+	border: 0;
+	border-bottom: 1px solid #776ed2;
+	background-color: transparent;
+}
+
+.ef__question ~ label {
+	position: absolute;
+  top: 4px;
+  text-align: left;
+  z-index: -1;
+	left: 25px;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+  color: #aaaaaa;
+}
+.ef__question:focus ~ label,
+.field.ef__exam ~ label {
+	font-size: 12px;
+	top: -22px;
+	transition: 0.3s;
+	color: #776ed2;
+}
+
 
 /* ヘッダー */
 
@@ -78,6 +225,9 @@ a {
 .nav__link {
   margin-right: 30px;
 }
+.nav__link:hover{
+  opacity: 0.5;
+}
 .nav__btn{
   display: inline-block;
   padding: 0.4em 1.6em;
@@ -106,6 +256,11 @@ a {
   opacity: 0.5;
 }
 
+
+
+
+
+
 /* メイン */
 
 .main__home {
@@ -119,9 +274,11 @@ a {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
+  margin: 10px 0;
 }
-.infomation__main {
+.information__main {
   text-align: center;
+  font-weight: bold;
 }
 
 .fadeIn {
@@ -171,28 +328,30 @@ a {
   background: #776ed2;
 }
 
+
+
+
+
 /* 試験 */
 .exam__message {
-  text-align: center;
-  padding: 0.4em 1.6em;
+  text-align: left;
+  padding: 0.8em 6em;
   font-size: 1.2em;
-  color: #776ed2;
-  text-decoration: none;
-  user-select: none;
   border: #776ed2 1px solid;
   border-radius: 3px;
-  transition: 0.4s ease;
   margin: 0 200px;
+  font-weight: bold;
 }
 
 .question__lists {
   text-align: center;
-  margin: 350px 20px 20px;
+  margin: 350px 0px 20px;
 }
 
 .question__list {
-  text-align: center;
-  padding: 0.4em 1.6em;
+  display: flex;
+  text-align: left;
+  padding: 0.4em 6em;
   font-size: 1.6em;
   background-color: #776ed2;
   color: white;
@@ -203,37 +362,105 @@ a {
   margin: 20px;
 }
 
+.question__number__left {
+  width: calc(100vw - 95vw);
+}
+
+.question__number {
+  padding: 0.2em 0.4em;
+  font-size: 0.6em;
+  font-weight: bold;
+  background-color: white;
+  color: #776ed2;
+  border-radius: 3px;
+  margin: 2px;
+}
+
 .choice__lists {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 90vw;
+  margin: 2em auto;
+}
+.choice__lists input[type='checkbox'] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.choice__lists label {
+	position: relative;
+	display: inline-block;
+	margin-right: 30px;
+  padding: 10px 10px 10px 60px;
+	cursor: pointer;
+}
+.choice__lists label::before {
+	position: absolute;
+	z-index: -1;
+	top: 12px;
+	left: 0;
+	display: block;
+	width: 30px;
+	height: 30px;
+	content: '';
+	border: 2px solid #776ed2;
+}
+.choice__lists input[type='checkbox'] + label::before {
+	border-radius: 3px;
+}
+.choice__lists input[type='checkbox']:checked + label {
+	padding-left: 10px;
+	color: #ffffff;
+}
+.choice__lists input[type='checkbox']:checked + label::before {
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #776ed2;
+}
+/* Transition */
+.choice__lists label, .cp_ipcheck label::before {
+	-webkit-transition: 0.3s all ease;
+	        transition: 0.3s all ease;
+}
+
+.side__width {
+  width: calc(100% - 15vw);
 }
 
 .choice__list {
-  display: inline-block;
-  padding: 0.4em 1.6em;
+  display: grid;
+  padding: 0.8em 6em;
   font-size: 1.6em;
   color: #776ed2;
-  text-decoration: none;
-  user-select: none;
   border: 1px #776ed2 solid;
   border-radius: 3px;
-  margin: 2px;
+  text-align: left;
+}
+
+.choice__list__new {
+  display: grid;
+  padding: 0.8em 6em;
+  font-size: 1.6em;
+  color: #776ed2;
+  text-align: left;
 }
 
 .exam__question {
   padding: 0.4em 1.6em;
-  font-size: 1.2em;
-  color: #776ed2;
-  text-decoration: none;
-  user-select: none;
-  border: 1px #776ed2 solid;
-  border-radius: 3px;
-  margin: 2px;
+  margin: 10px 0 5px;
   width: 90vw;
 }
 
-.exam__question__check {
-  display: inline-block;
+.btn__contents {
+  margin-top: 20px;
+
 }
+
+
+
+
+
 
 /* フォーム周り */
 .image__header {
@@ -242,20 +469,11 @@ a {
 
 .image__header__image {
   width: 600px;
+  margin: 10px 0;
 }
 
 .page__heading {
   text-align: center;
-}
-
-.form__wrapper{
-  min-height: calc(100vh - 220px);
-  display: flex;
-  justify-content: center;
-}
-
-.field{
-  margin: 10px 0;
 }
 
 .actions{
@@ -282,11 +500,44 @@ a {
 }
 
 .indispensable {
+  position: relative;
   background-color: #776ed2;
   color: white;
   font-size: 6px;
   border-radius: 3px;
   padding: 1px;
+  bottom: 13px;
+  right: 7px;
+}
+.indispensable__new {
+  position: relative;
+  background-color: #776ed2;
+  color: white;
+  font-size: 6px;
+  border-radius: 3px;
+  padding: 1px;
+  bottom: 2px;
+  right: 1px;
+}
+.indispensable__exam {
+  position: relative;
+  background-color: #776ed2;
+  color: white;
+  font-size: 6px;
+  border-radius: 3px;
+  padding: 1px;
+  bottom: 347px;
+  right: 7px;
+}
+.indispensable__question {
+  position: relative;
+  background-color: #776ed2;
+  color: white;
+  font-size: 6px;
+  border-radius: 3px;
+  padding: 1px;
+  bottom: 107px;
+  right: 13px;
 }
 .choice__text {
   transition: 0.5s;

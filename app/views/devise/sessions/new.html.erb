@@ -3,16 +3,18 @@
     <div class="image__header">
       <%= image_tag"sign.in.png", class: :image__header__image %><br><br>
       <h2 class="heading">ユーザーログイン</h2><br>
-      <div class="form__wrapper"> 
+      <div class="form__wrapper">
         <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <%= render 'devise/shared/error_messages', model: f.object %>
         <div class="field">
-          <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: :ef, :size=>"50" %>
+          <%= f.label :email, "メールアドレス"%><br />
+          <span class="focus_line"></span>
         </div>
         <div class="field">
-          <%= f.label :password, "パスワード（6文字以上）" %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: :ef, :size=>"50" %>
+          <%= f.label :password, "パスワード" %><br />
+          <span class="focus_line"></span>
         </div>
         <div class="actions">
           <%= f.submit "ログイン", class: :form__btn  %>

@@ -1,18 +1,21 @@
 class ResultsController < ApplicationController
 
-  # def new
-    # @exam = Exam.find(params[:id])
-    # @exam_questions = ExamQuestion.where(exam_id: @exam.id)
-    # @result_choice = ResultChoice.new
-  # end
+  def show
+    @exam = Exam.find(params[:id])
+    @exam_questions = ExamQuestion.where(exam_id: @exam.id)
+    @result_choice = ResultChoice.find(params[:id])
+  end
 
   def create
     @result = Result.new(result_params)
     if @result.save
       redirect_to root_path
     else
-      render :new
+      render template: "exams/show"
     end
+  end
+
+  def destroy
   end
 
   def result_params
