@@ -7,11 +7,12 @@ class ResultsController < ApplicationController
   end
 
   def create
+    @exam = Exam.find(params[:exam_id])
     @result = Result.new(result_params)
     if @result.save
       redirect_to root_path
     else
-      render template: "exams/show"
+      render :show
     end
   end
 

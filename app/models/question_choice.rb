@@ -9,6 +9,7 @@ class QuestionChoice
 
   def save
     question = Question.create(content: content, user_id: user_id)
+
     text.zip(answer_id) do |str, int|
       Choice.create(text: str[:tex], answer_id: int[:ans], question_id: question.id)
     end

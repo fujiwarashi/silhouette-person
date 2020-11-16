@@ -34,6 +34,8 @@ a {
   color: #3b4043;
 }
 
+
+
 /* 共通部分 */
 
 .form__wrapper{
@@ -243,6 +245,22 @@ a {
 .nav__btn:hover{
   color: white;
   background: #776ed2;
+}
+.nav__btn__wh {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  user-select: none;
+  border: 1px white solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin: 5px 10px 0 0;
+}
+.nav__btn__wh:hover{
+  color: #776ed2;
+  background: white;
 }
 .nav__logout{
   display: inline-block;
@@ -581,6 +599,52 @@ a {
   color: white;
   font-size: 10px;
 }
+
+
+
+
+
+/* ユーザーページ */
+.user__wrapper{
+  min-height: calc(100vh - 161px);
+}
+.table{
+  border-collapse: collapse;
+  margin: 32px 20px;
+  width: 80vw;
+}
+.table__col1{
+  text-align: left;
+  font-weight: bold;
+  background: #eeeeee;
+  border-collapse: collapse;
+  border: 1px solid #776ed2;
+  width: 30%;
+  padding: 8px;
+}
+.table__col2{
+  text-align: left;
+  border: 1px solid #776ed2;
+  border-collapse: collapse;
+  width: 70%;
+  padding: 16px 8px;
+}
+
+.user__heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px;
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  color: #776ed2;
+  background-color: #eeeeee;
+  text-decoration: none;
+  user-select: none;
+  border: 5px #776ed2 double;
+  border-radius: 3px;
+  transition: 0.4s ease;
+}
+
 
 /* タブレット対応 */
 @media (max-width: 1024px) {

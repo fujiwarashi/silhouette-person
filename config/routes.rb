@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root to: "exams#index"
   resources :exams, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :results, only: [:new, :create, :show, :destroy]
-    resources :questions, only: [:index, :new, :create, :destroy] do
-      resources :choices, only: :create
+    resources :questions, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
+      resources :choices, only: [:create, :update]
     end
   end
+  resources :users, only: :show
 end

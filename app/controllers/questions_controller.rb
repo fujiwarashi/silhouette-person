@@ -12,7 +12,32 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+    @question = Question.find(params[:exam_id])
+    @choice = Choice.where(question_id: @question.id)
+    binding.pry
+    redirect_to root_path if @question.user_id != current_user.id
+  end
+
+  def update
+    @question = Question.find(params[:question_id])
+    if @question.update(question_params)
+      redirect_to controller: :users, action: :show
+    else
+      render :edit
+    end
+  end
+
   def destroy
+    @question = Question.find(params[:exam_id])
+    if @question.user_id != current_user.id
+      redirect_to root_path
+    elsif @question.destroy
+      redirect_to controller: :users, action: :show
+    end
   end
 
   private

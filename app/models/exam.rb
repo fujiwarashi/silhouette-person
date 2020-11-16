@@ -8,4 +8,6 @@ class Exam < ApplicationRecord
     validates :title
     validates :message
   end
+
+  validates :question_ids, presence: true
 end

@@ -1,0 +1,86 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="user__heading">
+        <%= "#{@user.name}さんの受験情報"%>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1"><b>時間</b></th>
+            <td class="table__col2"><b>試験一覧</b></td>
+          <tr>
+          <% if Result.exists?(user_id: current_user.id) %>
+            <% @result.each do |result| %>
+            <tr>
+              <td class="table__col1"><%= result.created_at %></td>
+              <td class="table__col2"><%= Exam.find(result.exam_id).title %></td>
+            <tr>
+            <% end %>
+          <% else %>
+            <h2 class="heading">作成した試験はありません</h2>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h2 class="user__heading">
+        <%= "#{@user.name}さんの試験を受験した方の一覧"%>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1"><b>時間</b></th>
+            <td class="table__col2"><b>受験者一覧</b></td>
+          <tr>
+          <% if Result.exists?(exam_id: @exam.ids) %>
+            <% @results.each do |results| %>
+            <tr>
+              <td class="table__col1"><%= results.created_at %></td>
+              <td class="table__col2"><%= User.find(results.user_id).name %></td>
+            <tr>
+            <% end %>
+          <% else %>
+            <h2 class="heading">作成した試験を受けた方はいません</h2>
+          <% end %>
+        </tbody>
+      </table>
+
+      <h2 class="user__heading">
+        <%= "#{@user.name}さんの作った試験"%>
+      </h2>
+      <% if @exam.present?%>
+        <% @exam.each do |exam| %>
+          <div class="question__lists__user fadeIn">
+            <%= link_to exam_path(exam.id) do %>
+            <h3 class='exam__btn'>
+              <%= exam.title %>
+            </h3>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <h2 class="heading">作成した問題はありません</h2>
+      <% end %>
+      <h2 class="user__heading">
+        <%= "#{@user.name}さんの作った問題"%>
+      </h2>
+      <% if Question.exists?(user_id: current_user.id) %>
+        <% @question.each do |question| %>
+          <ul class="question__lists__user fadeIn">
+            <div class="question__list">
+            <div class="question__number__left">
+            </div>
+            <div><%= simple_format(h(question.content)) %>
+            <%= link_to '編集', edit_exam_question_path(question.id), class: :nav__btn__wh %>
+            <%= link_to '削除', exam_question_path(question.id), method: :delete, class: :nav__btn__wh %>
+            </div>
+            </div>
+          </ul>
+        <% end %>
+      <% else %>
+        <h2 class="heading">作成した問題はありません</h2>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

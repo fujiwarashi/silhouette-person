@@ -1,10 +1,10 @@
 <div class="main">
   <div class="inner">
     <div class="image__header">
-      <%= image_tag"exam.png", class: :image__header__image %><br><br>
+      <%= image_tag"edit.png", class: :image__header__image %><br><br>
       <h2 class="heading">試験編集</h2><br>
       <div class="form__wrapper">
-      <%= form_with model: @exam, url: exam_path(:exam_id), method: :patch, local: true do |f| %>
+      <%= form_with model: @exam, url: exam_path(params[:id]), method: :patch, local: true do |f| %>
       <%= render 'devise/shared/error_messages', model: f.object %>
         <div class="field">
           <span class="indispensable">必須</span>

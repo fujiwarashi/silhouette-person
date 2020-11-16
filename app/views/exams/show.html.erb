@@ -5,6 +5,7 @@
       <p class="heading">
         <%= @exam.title %>
       </p>
+      <%= "©︎ #{@exam.user.name}" %><br />
       <% if user_signed_in? %>
         <% if current_user.id == @exam.user_id %>
           <%= link_to '編集', edit_exam_path, class: :nav__btn %>
@@ -37,9 +38,7 @@
                     <div class="side__width"></div>
                   </ul>
               <% end %>
-            <div class="actions">
-            <br>
-            <br>
+            <div class="actions"><br />
               <%= f.submit "送信する", class: :nav__btn %>
               <%=link_to 'もどる', root_path, class: :nav__logout %>
             </div>
