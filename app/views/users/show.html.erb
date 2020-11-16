@@ -13,7 +13,7 @@
           <% if Result.exists?(user_id: current_user.id) %>
             <% @result.each do |result| %>
             <tr>
-              <td class="table__col1"><%= result.created_at %></td>
+              <td class="table__col1"><%= l result.created_at %></td>
               <td class="table__col2"><%= Exam.find(result.exam_id).title %></td>
             <tr>
             <% end %>
@@ -35,7 +35,7 @@
           <% if Result.exists?(exam_id: @exam.ids) %>
             <% @results.each do |results| %>
             <tr>
-              <td class="table__col1"><%= results.created_at %></td>
+              <td class="table__col1"><%= l results.created_at %></td>
               <td class="table__col2"><%= User.find(results.user_id).name %></td>
             <tr>
             <% end %>
