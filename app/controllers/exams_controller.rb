@@ -23,7 +23,7 @@ class ExamsController < ApplicationController
   def update
     @exam = Exam.find(params[:id])
     if @exam.update(exam_params)
-      redirect_to exam_path(params[:id])
+      redirect_to root_path
     else
       render :edit
     end

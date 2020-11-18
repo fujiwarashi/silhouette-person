@@ -6,12 +6,6 @@
         <%= @exam.title %>
       </p>
       <%= "©︎ #{@exam.user.name}" %><br />
-      <% if user_signed_in? %>
-        <% if current_user.id == @exam.user_id %>
-          <%= link_to '編集', edit_exam_path, class: :nav__btn %>
-          <%= link_to '削除', exam_path, method: :delete, class: :nav__btn %>
-        <% end %>
-      <% end %>
       <div class="exam__body">
         <div class="prototype__detail"><br>
           <p class="information__main">- 問題説明 -</p>
@@ -21,7 +15,7 @@
           <p class="information__main">下にスクロールすると開始します</p>
         </div>
         <% if user_signed_in? %>
-          <%= form_with model: @result, url:exam_results_path(params[:id]), local: true do |f| %>
+          <%= form_with model: @result, url:results_path(exam_id: params[:id]), local: true do |f| %>
               <% @exam_questions.each_with_index do |exam, i| %>
                 <ul class="question__lists fadeIn">
                   <div class="question__list">

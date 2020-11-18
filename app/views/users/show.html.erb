@@ -1,85 +1,123 @@
 <div class="main">
   <div class="inner">
+    <div class="image__header">
+      <%= image_tag"user.png", class: :image__header__image %>
+    </div>
+    <h2 class="heading"><%= "#{@user.name}さんのページ"%></h2>
+    <p class="caution">受験した試験、作った試験の受験状況、作った試験・問題がここに表示されます。</p>
     <div class="user__wrapper">
+    
+      <% if @result.present? %>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの受験情報"%>
       </h2>
       <table class="table">
         <tbody>
           <tr>
-            <th class="table__col1"><b>時間</b></th>
-            <td class="table__col2"><b>試験一覧</b></td>
+            <th class="table__col1"></th>
+            <th class="table__col2"><b>受験時間</b></th>
+            <td class="table__col3"><b>試験</b></td>
+            <th class="table__col6"><b>解答</b></th>
+            <th class="table__col5"><b>得点</b></th>
           <tr>
-          <% if Result.exists?(user_id: current_user.id) %>
-            <% @result.each do |result| %>
-            <tr>
-              <td class="table__col1"><%= l result.created_at %></td>
-              <td class="table__col2"><%= Exam.find(result.exam_id).title %></td>
-            <tr>
-            <% end %>
-          <% else %>
-            <h2 class="heading">作成した試験はありません</h2>
+          <% @result.each_with_index do |result, i| %>
+          <tr>
+            <th class="table__col1"><%= i + 1 %></th>
+            <td class="table__col2"><%= l result.created_at %></td>
+            <td class="table__col3"><%= Exam.find(result.exam_id).title %></td>
+            <td class="table__col6"><%= link_to "結果", result_path(result.id), class: :nav__btn %></td>
+            <th class="table__col5"><%= @result_choice_true.where(result_id: result.id).count %>/<%=result.choice_ids.count%></th>
+          <tr>
           <% end %>
         </tbody>
       </table>
+      <% end %>
 
+      <% if Result.exists?(exam_id: @exam.ids) %>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの試験を受験した方の一覧"%>
       </h2>
       <table class="table">
         <tbody>
           <tr>
-            <th class="table__col1"><b>時間</b></th>
-            <td class="table__col2"><b>受験者一覧</b></td>
+            <th class="table__col1"></th>
+            <th class="table__col1"><b>受験時間</b></th>
+            <td class="table__col3"><b>試験</b></td>
+            <td class="table__col4"><b>受験者一覧</b></td>
+            <th class="table__col6"><b>解答</b></th>
+            <th class="table__col5"><b>得点</b></th>
           <tr>
-          <% if Result.exists?(exam_id: @exam.ids) %>
-            <% @results.each do |results| %>
-            <tr>
-              <td class="table__col1"><%= l results.created_at %></td>
-              <td class="table__col2"><%= User.find(results.user_id).name %></td>
-            <tr>
-            <% end %>
-          <% else %>
-            <h2 class="heading">作成した試験を受けた方はいません</h2>
+          <% @results_not.each_with_index do |results, i| %>
+          <tr>
+            <th class="table__col1"><%= i + 1 %></th>
+            <td class="table__col2"><%= l results.created_at %></td>
+            <td class="table__col3"><%= Exam.find(results.exam_id).title %></td>
+            <td class="table__col4"><%= User.find(results.user_id).name %></td>
+            <td class="table__col6"><%= link_to "結果", result_path(results.id), class: :nav__btn %></td>
+            <th class="table__col5"><%= @result_choices_true.where(result_id: results.id).count %>/<%=results.choice_ids.count%></th>
+          <tr>
           <% end %>
         </tbody>
       </table>
+      <% end %>
 
+      <% if @exam.present?%>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの作った試験"%>
       </h2>
-      <% if @exam.present?%>
-        <% @exam.each do |exam| %>
-          <div class="question__lists__user fadeIn">
-            <%= link_to exam_path(exam.id) do %>
-            <h3 class='exam__btn'>
-              <%= exam.title %>
-            </h3>
-            <% end %>
-          </div>
-        <% end %>
-      <% else %>
-        <h2 class="heading">作成した問題はありません</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1"></th>
+            <th class="table__col1"><b>作成時間</b></th>
+            <td class="table__col3"><b>試験名</b></td>
+            <th class="table__col6"><b>編集</b></th>
+            <th class="table__col6"><b>削除</b></th>
+          <tr>
+          <% @exam.each_with_index do |exam, i|%>
+          <tr>
+            <th class="table__col1"><%= i + 1 %></th>
+            <td class="table__col2"><%= l exam.created_at %></td>
+            <td class="table__col3"><%= link_to exam.title, exam_path(exam.id), class: :nav__btn %></td>
+            <th class="table__col6"><%= link_to '編集', edit_exam_path(exam.id), class: :nav__btn %></th>
+            <th class="table__col6"><%= link_to '削除', exam_path(exam.id), method: :delete, class: :nav__btn %></th>
+          <tr>
+          <% end %>
+        </tbody>
+      </table>
       <% end %>
+
+      <% if @question.present? %>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの作った問題"%>
       </h2>
-      <% if Question.exists?(user_id: current_user.id) %>
-        <% @question.each do |question| %>
-          <ul class="question__lists__user fadeIn">
-            <div class="question__list">
-            <div class="question__number__left">
-            </div>
-            <div><%= simple_format(h(question.content)) %>
-            <%= link_to '編集', edit_exam_question_path(question.id), class: :nav__btn__wh %>
-            <%= link_to '削除', exam_question_path(question.id), method: :delete, class: :nav__btn__wh %>
-            </div>
-            </div>
-          </ul>
-        <% end %>
-      <% else %>
-        <h2 class="heading">作成した問題はありません</h2>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1"></th>
+            <th class="table__col1"><b>作成時間</b></th>
+            <td class="table__col3"><b>問題文</b></td>
+            <th class="table__col7"><b>選択肢</b></th>
+            <th class="table__col6"><b>編集</b></th>
+            <th class="table__col6"><b>削除</b></th>
+          <tr>
+          <% @question.each_with_index do |question, i|%>
+          <tr>
+            <th class="table__col1"><%= i + 1 %></th>
+            <td class="table__col2"><%= l question.created_at %></td>
+            <td class="table__col3"><%= question.content %></td>
+            <th class="table__col7"><%= link_to '選択肢', edit_question_choice_path(question.id), class: :nav__btn %></th>
+            <th class="table__col6"><%= link_to '編集', edit_question_path(question.id), class: :nav__btn %></th>
+            <th class="table__col6"><%= link_to '削除', question_path(question.id), method: :delete, class: :nav__btn %></th>
+          <tr>
+          <% end %>
+        </tbody>
+      </table>
       <% end %>
+      <div class="caution">
+        <%=link_to 'もどる', root_path, class: :nav__logout%>
+      </div>
       </div>
     </div>
   </div>

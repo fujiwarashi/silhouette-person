@@ -4,7 +4,16 @@ class QuestionChoice
 
   with_options presence: true do
     validates :content
-    validates :text
+  end
+
+  validate :text_validation
+
+  def text_validation
+    text.each_with_index do |tex, i|
+      if tex[:tex] == ""
+        errors.add(:text, "#{i += 1}が選択されていません")
+      end
+    end
   end
 
   def save

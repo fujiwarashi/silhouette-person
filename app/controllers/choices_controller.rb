@@ -1,8 +1,12 @@
 class ChoicesController < ApplicationController
 
+  def edit
+    @question = Question.where(user_id: params[:id])
+    @choice = Choice.whereChoice.where(question_id: params[:question_id])
+  end
+
   def update
-    @choice = Choice.where(question_id: @question.id)
-    # @question = Question.find(params[:question_id])
+    @choice = Choice.where(question_id: params[:question_id])
     if @choice.update(choice_params)
       redirect_to controller: :users, action: :show
     else
@@ -13,6 +17,6 @@ class ChoicesController < ApplicationController
   private
 
   def choice_params
-    # params.require(:choice).permit(:title, :message, question_ids:[]).merge(user_id: current_user.id)
+    params.require(:choice).permit(answer_id: [:ans], text: [:tex]).merge(user_id: current_user.id)
   end
 end
