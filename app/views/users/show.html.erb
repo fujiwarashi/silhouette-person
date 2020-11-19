@@ -18,7 +18,6 @@
             <th class="table__col2"><b>受験時間</b></th>
             <td class="table__col3"><b>試験</b></td>
             <th class="table__col6"><b>解答</b></th>
-            <th class="table__col5"><b>得点</b></th>
           <tr>
           <% @result.each_with_index do |result, i| %>
           <tr>
@@ -26,7 +25,6 @@
             <td class="table__col2"><%= l result.created_at %></td>
             <td class="table__col3"><%= Exam.find(result.exam_id).title %></td>
             <td class="table__col6"><%= link_to "結果", result_path(result.id), class: :nav__btn %></td>
-            <th class="table__col5"><%= @result_choice_true.where(result_id: result.id).count %>/<%=result.choice_ids.count%></th>
           <tr>
           <% end %>
         </tbody>
@@ -45,7 +43,7 @@
             <td class="table__col3"><b>試験</b></td>
             <td class="table__col4"><b>受験者一覧</b></td>
             <th class="table__col6"><b>解答</b></th>
-            <th class="table__col5"><b>得点</b></th>
+            <%# <th class="table__col5"><b>得点</b></th> %>
           <tr>
           <% @results_not.each_with_index do |results, i| %>
           <tr>
@@ -54,7 +52,6 @@
             <td class="table__col3"><%= Exam.find(results.exam_id).title %></td>
             <td class="table__col4"><%= User.find(results.user_id).name %></td>
             <td class="table__col6"><%= link_to "結果", result_path(results.id), class: :nav__btn %></td>
-            <th class="table__col5"><%= @result_choices_true.where(result_id: results.id).count %>/<%=results.choice_ids.count%></th>
           <tr>
           <% end %>
         </tbody>

@@ -1,0 +1,12 @@
+<main class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"finish.png", class: :image__header__image %>
+      <p class="heading">お疲れ様でした！</p>
+      <%= image_tag("finish_message.png", class: :finish) %><br />
+
+        <%=link_to '解答ページ', result_path(@result.id), class: :nav__btn %>
+        <%=link_to 'もどる', root_path, class: :nav__logout %>
+    </div>
+  </div>
+</main>

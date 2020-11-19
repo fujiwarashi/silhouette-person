@@ -1,6 +1,6 @@
 class QuestionChoice
   include ActiveModel::Model
-  attr_accessor :content, :user_id, :text, :answer_id, :question_id
+  attr_accessor :content, :allocation_id, :user_id, :text, :answer_id, :question_id
 
   with_options presence: true do
     validates :content
@@ -17,7 +17,7 @@ class QuestionChoice
   end
 
   def save
-    question = Question.create(content: content, user_id: user_id)
+    question = Question.create(content: content, allocation_id: allocation_id, user_id: user_id)
 
     text.zip(answer_id) do |str, int|
       Choice.create(text: str[:tex], answer_id: int[:ans], question_id: question.id)

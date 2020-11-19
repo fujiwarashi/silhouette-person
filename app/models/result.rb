@@ -5,4 +5,5 @@ class Result < ApplicationRecord
   has_many :choices, through: :result_choices
 
   validates :choice_ids, presence: true
+
 end

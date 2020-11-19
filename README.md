@@ -7,6 +7,7 @@
 | name                    	| string       	| NOT NULL          	|
 | email                   	| string       	| NOT NULL          	|
 | encrypted_password      	| string       	| NOT NULL          	|
+| status                  	| integer     	| default: 1, NOT NULL|
 
 ### Association
 
@@ -46,6 +47,7 @@
 | Column                    | Type          | Options             |
 | ------------------------- | ------------- | ------------------- |
 | content                 	| string       	| NOT NULL          	|
+| allocation_id             | integer   	  | NOT NULL 	          |
 | image                   	|               | ActiveStorage     	|
 | user_id                 	| references   	| foreign_key: true 	|
 
@@ -61,7 +63,7 @@
 | Column                    | Type          | Options             |
 | ------------------------- | ------------- | ------------------- |
 | text                    	| string       	| NOT NULL          	|
-| is_answer               	| boolean      	| NOT NULL          	|
+| answer_id                	| integer      	| NOT NULL          	|
 | question_id             	| references   	| foreign_key: true 	|
 
 ### Association

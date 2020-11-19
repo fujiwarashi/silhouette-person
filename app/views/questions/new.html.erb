@@ -15,7 +15,8 @@
         <div class="field">
           <span class="indispensable__question">必須</span>
           <%= f.text_area :content, id:"question_content",class: :ef__question, rows:"5", cols:"55"%>
-          <%= f.label :content, "問題文" %><br />
+          <%= f.label :content, "問題文" %>
+          <%= f.collection_select(:allocation_id, Allocation.all, :id, :name, {}, {class: :ef__exam, id:"allocation"})%><br />
           <span class="focus_line"></span>
         </div>
         <div class="field">

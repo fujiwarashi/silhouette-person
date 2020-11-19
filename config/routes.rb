@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :exams, only: [:new, :create, :show, :edit, :update, :destroy]
 
-  resources :questions, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
+  resources :questions, only: [:new, :create, :show, :edit, :destroy, :update] do
     resources :choices, only: [:create, :edit, :update]
   end
 

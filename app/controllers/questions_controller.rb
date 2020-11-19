@@ -42,10 +42,10 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:content).merge(user_id: current_user.id)
+    params.require(:question).permit(:content, :allocation_id).merge(user_id: current_user.id)
   end
 
   def question_choice_params
-    params.require(:question_choice).permit(:content, answer_id: [:ans], text: [:tex] ).merge(user_id: current_user.id)
+    params.require(:question_choice).permit(:content, :allocation_id, answer_id: [:ans], text: [:tex] ).merge(user_id: current_user.id)
   end
 end
