@@ -7,6 +7,32 @@
     <p class="caution">受験した試験、作った試験の受験状況、作った試験・問題がここに表示されます。</p>
     <div class="user__wrapper">
     
+      <% if Result.exists?(exam_id: @exam.ids) && Result.where.not(user_id: current_user.id) %>
+      <h2 class="user__heading">
+        <%= "#{@user.name}さんの試験を受験した方の一覧"%>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1"></th>
+            <th class="table__col1"><b>受験時間</b></th>
+            <td class="table__col3"><b>試験</b></td>
+            <td class="table__col4"><b>受験者一覧</b></td>
+            <th class="table__col6"><b>解答</b></th>
+          <tr>
+          <% @results_not.each_with_index do |results, i| %>
+          <tr>
+            <th class="table__col1"><%= i + 1 %></th>
+            <td class="table__col2"><%= l results.created_at %></td>
+            <td class="table__col3"><%= Exam.find(results.exam_id).title %></td>
+            <td class="table__col4"><%= User.find(results.user_id).name %></td>
+            <td class="table__col6"><%= link_to "結果", result_path(results.id), class: :nav__btn %></td>
+          <tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+
       <% if @result.present? %>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの受験情報"%>
@@ -25,33 +51,6 @@
             <td class="table__col2"><%= l result.created_at %></td>
             <td class="table__col3"><%= Exam.find(result.exam_id).title %></td>
             <td class="table__col6"><%= link_to "結果", result_path(result.id), class: :nav__btn %></td>
-          <tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% end %>
-
-      <% if Result.exists?(exam_id: @exam.ids) %>
-      <h2 class="user__heading">
-        <%= "#{@user.name}さんの試験を受験した方の一覧"%>
-      </h2>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1"></th>
-            <th class="table__col1"><b>受験時間</b></th>
-            <td class="table__col3"><b>試験</b></td>
-            <td class="table__col4"><b>受験者一覧</b></td>
-            <th class="table__col6"><b>解答</b></th>
-            <%# <th class="table__col5"><b>得点</b></th> %>
-          <tr>
-          <% @results_not.each_with_index do |results, i| %>
-          <tr>
-            <th class="table__col1"><%= i + 1 %></th>
-            <td class="table__col2"><%= l results.created_at %></td>
-            <td class="table__col3"><%= Exam.find(results.exam_id).title %></td>
-            <td class="table__col4"><%= User.find(results.user_id).name %></td>
-            <td class="table__col6"><%= link_to "結果", result_path(results.id), class: :nav__btn %></td>
           <tr>
           <% end %>
         </tbody>
@@ -104,7 +103,7 @@
             <th class="table__col1"><%= i + 1 %></th>
             <td class="table__col2"><%= l question.created_at %></td>
             <td class="table__col3"><%= question.content %></td>
-            <th class="table__col7"><%= link_to '選択肢', edit_question_choice_path(question.id), class: :nav__btn %></th>
+            <th class="table__col7"><%= link_to '選択肢', edit_question_choice_path(question.id, question.choices.ids), class: :nav__btn %></th>
             <th class="table__col6"><%= link_to '編集', edit_question_path(question.id), class: :nav__btn %></th>
             <th class="table__col6"><%= link_to '削除', question_path(question.id), method: :delete, class: :nav__btn %></th>
           <tr>

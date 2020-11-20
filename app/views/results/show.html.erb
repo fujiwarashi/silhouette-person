@@ -23,6 +23,7 @@
                     <div class="allocation__right"%><span class="question__allocation"><%= "#{exam.question.allocation_id}点"%></span></div>
                   </div>
               </ul>
+              <%= image_tag exam.question.image, class: :image__size if exam.question.image.attached? %>
                 <ul class="choice__lists">
                   <div class="side__width"><div>
                   <div class="choice__list">

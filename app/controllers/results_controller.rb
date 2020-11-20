@@ -1,8 +1,8 @@
 class ResultsController < ApplicationController
 
   def show
-    @exam = Exam.find(@result[:exam_id])
     @result = Result.find(params[:id])
+    @exam = Exam.find(@result[:exam_id])
     @exam_questions = ExamQuestion.where(exam_id: @exam.id)
   end
 

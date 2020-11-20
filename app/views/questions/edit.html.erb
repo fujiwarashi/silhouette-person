@@ -5,6 +5,11 @@
       <h2 class="heading">問題編集</h2><br>
         <div class="form__wrapper">
         <%= form_with model:@question, url: question_path(params[:id]), method: :patch, local: true do |f| %>
+        <%= render 'devise/shared/error_messages', model: f.object %>
+        <div class="question__image">
+        <label for="question_image" class="form__btn">画像を更新する
+            <%= f.file_field :image, id:"question_image"%></label>
+        </div>
           <span class="indispensable__question">必須</span>
           <%= f.text_area :content, id:"question_content",class: :ef__question, rows:"5", cols:"55"%>
           <%= f.label :content, "問題文" %><br />

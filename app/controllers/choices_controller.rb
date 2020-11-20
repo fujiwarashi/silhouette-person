@@ -2,13 +2,13 @@ class ChoicesController < ApplicationController
 
   def edit
     @question = Question.where(user_id: params[:id])
-    @choice = Choice.whereChoice.where(question_id: params[:question_id])
+    @choice = Choice.where(question_id: params[:question_id])
   end
 
   def update
     @choice = Choice.where(question_id: params[:question_id])
     if @choice.update(choice_params)
-      redirect_to controller: :users, action: :show
+      redirect_to root_path
     else
       render :edit
     end

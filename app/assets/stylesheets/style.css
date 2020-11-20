@@ -411,6 +411,10 @@ a {
   text-align: right;
 }
 
+.image__size {
+  height: 35vh;
+}
+
 .choice__lists {
   display: flex;
   justify-content: center;
@@ -537,6 +541,7 @@ a {
 
 .indispensable {
   position: relative;
+  display: inline;
   background-color: #776ed2;
   color: white;
   font-size: 6px;
@@ -553,7 +558,7 @@ a {
   border-radius: 3px;
   padding: 1px;
   bottom: 2px;
-  right: 1px;
+  right: 13px;
 }
 .indispensable__exam {
   position: relative;
@@ -581,6 +586,17 @@ a {
   border-radius: 3px;
 }
 
+.question__image {
+  position: relative;
+}
+
+input[type="file"] {
+  position: absolute;
+  color: #776ed2;
+  right: 165px;
+  font-size: 0.1em;
+  z-index: -1;
+}
 
 /* フッター */
 

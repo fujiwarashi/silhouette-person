@@ -46,6 +46,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_choice_params
-    params.require(:question_choice).permit(:content, :allocation_id, answer_id: [:ans], text: [:tex] ).merge(user_id: current_user.id)
+    params.require(:question_choice).permit(:content, :allocation_id, :image, answer_id: [:ans], text: [:tex] ).merge(user_id: current_user.id)
   end
 end

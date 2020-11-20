@@ -4,7 +4,7 @@
       <%= image_tag"question.png", class: :image__header__image %>
       <h2 class="heading">選択肢編集</h2><br>
         <div class="form__wrapper">
-        <%= form_with model:@choice, url: question_choice_path(@question.ids), method: :patch, local: true do |f| %>
+        <%= form_with model:@choice, url: question_choice_path(@choice.ids), method: :patch, local: true do |f| %>
         <div class="field">
           <span class="indispensable__new">必須</span>
           <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>

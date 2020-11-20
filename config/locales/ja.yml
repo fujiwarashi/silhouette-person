@@ -2,3 +2,23 @@ ja:
   time:
     formats:
       default: "%Y年%m月%d日  %H:%M"
+
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        password: パスワード
+      exam:
+        title: 試験名
+        message: 説明文
+        question_ids: 問題
+
+  activemodel:
+    models:
+      question_choice:
+    attributes:
+      question_choice:
+        content: 問題文
+        allocation: 配点
+        text: 選択肢
+        answer: 正解
