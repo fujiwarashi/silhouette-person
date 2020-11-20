@@ -19,6 +19,7 @@
             <td class="table__col3"><b>試験</b></td>
             <td class="table__col4"><b>受験者一覧</b></td>
             <th class="table__col6"><b>解答</b></th>
+            <th class="table__col6"><b>削除</b></th>
           <tr>
           <% @results_not.each_with_index do |results, i| %>
           <tr>
@@ -27,6 +28,7 @@
             <td class="table__col3"><%= Exam.find(results.exam_id).title %></td>
             <td class="table__col4"><%= User.find(results.user_id).name %></td>
             <td class="table__col6"><%= link_to "結果", result_path(results.id), class: :nav__btn %></td>
+            <td class="table__col6"><%= link_to "削除", result_path(results.id), method: :delete, class: :nav__btn %></td>
           <tr>
           <% end %>
         </tbody>

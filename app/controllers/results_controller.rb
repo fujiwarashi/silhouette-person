@@ -19,6 +19,13 @@ class ResultsController < ApplicationController
   end
 
   def destroy
+    @result = Result.find(params[:id])
+    exam = Exam.find(@result.exam_id)
+    if exam.user_id != current_user.id
+      redirect_to root_path
+    elsif @result.destroy
+      redirect_to root_path
+    end
   end
 
   def result_params
