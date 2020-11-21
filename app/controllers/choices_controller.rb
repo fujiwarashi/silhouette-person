@@ -6,9 +6,9 @@ class ChoicesController < ApplicationController
   end
 
   def update
-    @choice = Choice.where(question_id: params[:question_id])
+    @choice = Choice.find(params[:id])
     if @choice.update(choice_params)
-      redirect_to root_path
+      redirect_to question_path(params[:question_id])
     else
       render :edit
     end
@@ -17,6 +17,6 @@ class ChoicesController < ApplicationController
   private
 
   def choice_params
-    params.require(:choice).permit(answer_id: [:ans], text: [:tex]).merge(user_id: current_user.id)
+    params.require(:choice).permit(:answer_id, :text)
   end
 end

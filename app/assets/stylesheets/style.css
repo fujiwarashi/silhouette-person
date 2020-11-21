@@ -191,6 +191,8 @@ a {
 }
 
 
+
+
 /* ヘッダー */
 
 .header {
@@ -328,8 +330,9 @@ a {
 }
 
 .exam__index {
-  display: grid;
-  justify-content: center;
+}
+
+.exam__index__link {
 }
 
 .exam__btn{
@@ -414,6 +417,16 @@ a {
 .image__size {
   height: 35vh;
 }
+.image__preview {
+  width: 350px;
+  margin: 0 auto;
+}
+.question_image {
+}
+.image__size__small {
+  height: 5vh;
+}
+
 
 .choice__lists {
   display: flex;
@@ -587,15 +600,12 @@ a {
 }
 
 .question__image {
-  position: relative;
+  /* position: relative; */
 }
 
 input[type="file"] {
-  position: absolute;
-  color: #776ed2;
-  right: 165px;
   font-size: 0.1em;
-  z-index: -1;
+  color: #776ed2;
 }
 
 /* フッター */
@@ -769,7 +779,7 @@ input[type="file"] {
   text-align: center;
   border: 1px solid #776ed2;
   border-collapse: collapse;
-  width: 9%;
+  width: 4%;
   padding: 16px 8px;
 }
 
@@ -842,10 +852,24 @@ input[type="file"] {
   .nav__link {
     font-size: 11px;
   }
-  .nav__btn{
+  .nav__btn {
     height: auto;
+    font-size: 0.1em;
+  }
+  .nav__logout {
+    width: auto;
+    font-size: 0.1em;
+  }
+
+  .form__btn {
+    width: auto;
+    font-size: 0.1em;
+  }
+
+  .caution {
     font-size: 11px;
   }
+
   .page-heading {
     font-size: 20px;
   }
@@ -867,5 +891,33 @@ input[type="file"] {
   font-size: 0.8em;
   margin: 3px;
   width: 400px;
+  }
+  
+  .table{
+    border-collapse: collapse;
+    margin: 3px 2px;
+    width: 90vw;
+  }
+
+  .table__col1{
+    font-size: 0.1em;
+  }
+  .table__col2{
+    font-size: 0.1em;
+  }
+  .table__col3{
+    font-size: 0.1em;
+  }
+  .table__col4{
+    font-size: 0.1em;
+  }
+  .table__col5{
+    font-size: 0.1em;
+  }
+  .table__col6{
+    font-size: 0.1em;
+  }
+  .table__col7{
+    font-size: 0.1em;
   }
 }

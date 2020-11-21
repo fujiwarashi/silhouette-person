@@ -9,7 +9,7 @@
     
       <% if Result.exists?(exam_id: @exam.ids) && Result.where.not(user_id: current_user.id) %>
       <h2 class="user__heading">
-        <%= "#{@user.name}さんの試験を受験した方の一覧"%>
+        <%= "#{@user.name}さんの試験の受験者一覧"%>
       </h2>
       <table class="table">
         <tbody>
@@ -19,7 +19,7 @@
             <td class="table__col3"><b>試験</b></td>
             <td class="table__col4"><b>受験者一覧</b></td>
             <th class="table__col6"><b>解答</b></th>
-            <th class="table__col6"><b>削除</b></th>
+            <th class="table__col5"><b>削除</b></th>
           <tr>
           <% @results_not.each_with_index do |results, i| %>
           <tr>
@@ -28,7 +28,7 @@
             <td class="table__col3"><%= Exam.find(results.exam_id).title %></td>
             <td class="table__col4"><%= User.find(results.user_id).name %></td>
             <td class="table__col6"><%= link_to "結果", result_path(results.id), class: :nav__btn %></td>
-            <td class="table__col6"><%= link_to "削除", result_path(results.id), method: :delete, class: :nav__btn %></td>
+            <td class="table__col5"><%= link_to "削除", result_path(results.id), method: :delete, class: :nav__logout %></td>
           <tr>
           <% end %>
         </tbody>
@@ -43,8 +43,9 @@
         <tbody>
           <tr>
             <th class="table__col1"></th>
-            <th class="table__col2"><b>受験時間</b></th>
+            <th class="table__col1"><b>受験時間</b></th>
             <td class="table__col3"><b>試験</b></td>
+            <td class="table__col4"><b>作成者一覧</b></td>
             <th class="table__col6"><b>解答</b></th>
           <tr>
           <% @result.each_with_index do |result, i| %>
@@ -52,6 +53,7 @@
             <th class="table__col1"><%= i + 1 %></th>
             <td class="table__col2"><%= l result.created_at %></td>
             <td class="table__col3"><%= Exam.find(result.exam_id).title %></td>
+            <td class="table__col4"><% exam_user = Exam.find(result.exam_id).user_id %><%= User.find(exam_user).name %></td>
             <td class="table__col6"><%= link_to "結果", result_path(result.id), class: :nav__btn %></td>
           <tr>
           <% end %>
@@ -70,7 +72,7 @@
             <th class="table__col1"><b>作成時間</b></th>
             <td class="table__col3"><b>試験名</b></td>
             <th class="table__col6"><b>編集</b></th>
-            <th class="table__col6"><b>削除</b></th>
+            <th class="table__col5"><b>削除</b></th>
           <tr>
           <% @exam.each_with_index do |exam, i|%>
           <tr>
@@ -78,7 +80,7 @@
             <td class="table__col2"><%= l exam.created_at %></td>
             <td class="table__col3"><%= link_to exam.title, exam_path(exam.id), class: :nav__btn %></td>
             <th class="table__col6"><%= link_to '編集', edit_exam_path(exam.id), class: :nav__btn %></th>
-            <th class="table__col6"><%= link_to '削除', exam_path(exam.id), method: :delete, class: :nav__btn %></th>
+            <th class="table__col5"><%= link_to '削除', exam_path(exam.id), method: :delete, class: :nav__logout %></th>
           <tr>
           <% end %>
         </tbody>
@@ -96,18 +98,20 @@
             <th class="table__col1"></th>
             <th class="table__col1"><b>作成時間</b></th>
             <td class="table__col3"><b>問題文</b></td>
-            <th class="table__col7"><b>選択肢</b></th>
+            <th class="table__col7"><b>配点</b></th>
+            <th class="table__col6"><b>画像</b></th>
             <th class="table__col6"><b>編集</b></th>
-            <th class="table__col6"><b>削除</b></th>
+            <th class="table__col5"><b>削除</b></th>
           <tr>
           <% @question.each_with_index do |question, i|%>
           <tr>
             <th class="table__col1"><%= i + 1 %></th>
             <td class="table__col2"><%= l question.created_at %></td>
             <td class="table__col3"><%= question.content %></td>
-            <th class="table__col7"><%= link_to '選択肢', edit_question_choice_path(question.id, question.choices.ids), class: :nav__btn %></th>
-            <th class="table__col6"><%= link_to '編集', edit_question_path(question.id), class: :nav__btn %></th>
-            <th class="table__col6"><%= link_to '削除', question_path(question.id), method: :delete, class: :nav__btn %></th>
+            <th class="table__col7"><%= question.allocation_id %></th>
+            <th class="table__col6"><%= image_tag question.image , class: :image__size__small if question.image.attached? %></th>
+            <th class="table__col6"><%= link_to '詳細', question_path(question.id), class: :nav__btn %></th>
+            <th class="table__col5"><%= link_to '削除', question_path(question.id), method: :delete, class: :nav__logout %></th>
           <tr>
           <% end %>
         </tbody>

@@ -23,7 +23,7 @@ class ExamsController < ApplicationController
   def update
     @exam = Exam.find(params[:id])
     if @exam.update(exam_params)
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class ExamsController < ApplicationController
     if @exam.user_id != current_user.id
       redirect_to root_path
     elsif @exam.destroy
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
   end
 

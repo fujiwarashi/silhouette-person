@@ -23,12 +23,4 @@ class QuestionChoice
       Choice.create(text: str[:tex], answer_id: int[:ans], question_id: question.id)
     end
   end
-
-  def update
-    question = Question.create(content: content, allocation_id: allocation_id, user_id: user_id, image: image)
-
-    text.zip(answer_id) do |str, int|
-      Choice.create(text: str[:tex], answer_id: int[:ans], question_id: question.id)
-    end
-  end
 end

@@ -48,7 +48,7 @@
           <div class="actions"><br />
           <div class="score__allocation">採点結果<span class="score__integer"><%= score %></span>点 / 
           <span class="allocation__integer"><%= conceded + score %></span>点満点</div><br /><br />
-            <%=link_to 'もどる', root_path, class: :nav__logout %>
+            <%=link_to 'もどる', user_path(current_user), class: :nav__logout %>
           </div>
         <% end %>
       </div>

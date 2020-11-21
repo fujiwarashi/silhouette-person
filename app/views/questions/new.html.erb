@@ -7,15 +7,16 @@
         <%= form_with model:@question_choice, url: questions_path, local: true do |f| %>
         <%= render 'devise/shared/error_messages', model: f.object %>
         <div class="question__image">
-        <label for="question_image" class="form__btn">画像を投稿する
+        <label for="question_image" class="nav__btn">画像を投稿する
             <%= f.file_field :image, id:"question_image"%></label>
+          <div id="image-list", class="image__preview"></div>
         </div>
         <div class="field">
           <span class="indispensable__question">必須</span>
           <%= f.text_area :content, id:"question_content",class: :ef__question, rows:"5", cols:"55"%>
           <%= f.label :content, "問題文" %>
           <span class="focus_line"></span>
-        <%= f.collection_select(:allocation_id, Allocation.all, :id, :name, {}, {class: :ef__exam, id:"allocation"})%>
+          <%= f.collection_select(:allocation_id, Allocation.all, :id, :name, {}, {class: :ef__exam, id:"allocation"})%>
           <div class="indispensable">配点</div>
         </div>
         <div class="field">

@@ -1,41 +1,20 @@
 <div class="main">
   <div class="inner">
     <div class="image__header">
-      <%= image_tag"question.png", class: :image__header__image %>
+      <%= image_tag"edit.question.png", class: :image__header__image %>
       <h2 class="heading">選択肢編集</h2><br>
         <div class="form__wrapper">
-        <%= form_with model:@choice, url: question_choice_path(@choice.ids), method: :patch, local: true do |f| %>
+        <%= form_with model:@choice, url: question_choice_path, method: :patch, local: true do |f| %>
         <div class="field">
           <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
-          <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
-          <span class="focus_line"></span>
-        </div>
-        <div class="field">
-          <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
-          <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
-          <span class="focus_line"></span>
-        </div>
-        <div class="field">
-          <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
-          <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
-          <span class="focus_line"></span>
-        </div>
-        <div class="field">
-          <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
-          <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
+          <%= f.text_field :text, class: :ef__question, :size=>"52" %>
+          <%= f.label :text, "選択肢" %>
+          <%= f.collection_select :answer_id, Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"} %>
           <span class="focus_line"></span>
         </div>
       <div class="sell-btn-contents">
         <%= f.submit "編集する" ,class: :form__btn %>
-        <%=link_to 'もどる', root_path, class: :nav__logout%>
+        <%=link_to 'もどる', question_path(params[:question_id]), class: :nav__logout%>
       </div>
       <% end %>
       <br>

@@ -28,7 +28,7 @@
           </div>
           <div class="btn__contents">
             <%= f.submit "編集する", class: :form__btn %>
-            <%=link_to 'もどる', root_path, class: :nav__logout %>
+            <%=link_to 'もどる', user_path(current_user), class: :nav__logout %>
           </div>
       <% end %>
       </div>

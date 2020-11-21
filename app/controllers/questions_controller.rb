@@ -7,13 +7,15 @@ class QuestionsController < ApplicationController
     @question_choice = QuestionChoice.new(question_choice_params)
     if @question_choice.valid?
       @question_choice.save
-      redirect_to root_path
+      redirect_to new_question_path
     else
       render :new
     end
   end
 
   def show
+    @question = Question.find(params[:id])
+    @choices = @question.choices
   end
 
   def edit
@@ -24,7 +26,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      redirect_to root_path
+      redirect_to question_path(params[:id])
     else
       render :edit
     end
@@ -35,14 +37,14 @@ class QuestionsController < ApplicationController
     if @question.user_id != current_user.id
       redirect_to root_path
     elsif @question.destroy
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
   end
 
   private
 
   def question_params
-    params.require(:question).permit(:content, :allocation_id).merge(user_id: current_user.id)
+    params.require(:question).permit(:content, :allocation_id, :image).merge(user_id: current_user.id)
   end
 
   def question_choice_params

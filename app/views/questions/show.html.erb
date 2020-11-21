@@ -1,0 +1,48 @@
+<main class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"question.show.png", class: :image__header__image %>
+      <p class="heading">
+        <%= image_tag @question.image , class: :image__size if @question.image.attached? %>
+      </p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1"></th>
+            <th class="table__col1"><b>作成時間</b></th>
+            <td class="table__col3"><b>問題文・選択肢</b></td>
+            <th class="table__col6"><b>配点・正解</b></th>
+            <th class="table__col6"><b>編集</b></th>
+          <tr>
+          <tr>
+            <th class="table__col1"></th>
+            <th class="table__col2"><b><%= l @question.created_at %></b></th>
+            <td class="table__col3"><b><%= @question.content %></b></td>
+            <th class="table__col6"><b><%= @question.allocation_id %></th>
+            <th class="table__col6"><%= link_to "編集", edit_question_path(params[:id]), class: :nav__btn %></th>
+          <tr>
+          <% @choices.each_with_index do |choice, i| %>
+          <tr>
+            <th class="table__col1"><%= i + 1 %></th>
+            <td class="table__col2"></td>
+            <td class="table__col3"><%= "#{i += 1}.#{choice.text}" %></td>
+            <td class="table__col6">
+            <% if choice.answer_id == 1 %>
+            ×
+            <% else %>
+            ◯
+            <% end %>
+            </td>
+            <td class="table__col6"><%= link_to "編集",  edit_question_choice_path(params[:id], choice.id), class: :nav__btn %></td>
+          <tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class="caution">
+        <%=link_to 'もどる', user_path(current_user), class: :nav__logout%>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

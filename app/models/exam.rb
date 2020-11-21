@@ -7,7 +7,6 @@ class Exam < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :message
+    validates :question_ids
   end
-
-  validates :question_ids, presence: true
 end

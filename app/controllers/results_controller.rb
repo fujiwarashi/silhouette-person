@@ -24,7 +24,7 @@ class ResultsController < ApplicationController
     if exam.user_id != current_user.id
       redirect_to root_path
     elsif @result.destroy
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
   end
 
