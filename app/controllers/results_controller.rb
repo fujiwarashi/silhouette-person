@@ -7,7 +7,7 @@ class ResultsController < ApplicationController
   end
 
   def create
-    @exam = Exam.find(params[:exam_id])
+    @exam = Exam.find_by(id_digest: params[:exam_id])
     @exam_questions = ExamQuestion.where(exam_id: @exam.id)
     @result = Result.new(result_params)
     if @result.valid? 
@@ -29,7 +29,7 @@ class ResultsController < ApplicationController
   end
 
   def result_params
-    params.require(:result).permit(choice_ids:[]).merge(user_id: current_user.id, exam_id: params[:exam_id])
+    params.require(:result).permit(choice_ids:[]).merge(user_id: current_user.id, exam_id: @exam.id)
   end
   
 end

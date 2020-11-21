@@ -26,7 +26,7 @@
         <ul class="exam__index">
         <% @exams.each do |exam| %>
           <li class='exam__index__link'>
-            <%= link_to exam_path(exam.id) do %>
+            <%= link_to exam_path(exam.id_digest) do %>
               <h3 class='exam__btn'>
                 <%= exam.title %>
               </h3>

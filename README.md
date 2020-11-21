@@ -7,7 +7,6 @@
 | name                    	| string       	| NOT NULL          	|
 | email                   	| string       	| NOT NULL          	|
 | encrypted_password      	| string       	| NOT NULL          	|
-| status                  	| integer     	| default: 1, NOT NULL|
 
 ### Association
 
@@ -21,6 +20,8 @@
 | ------------------------- | ------------- | ------------------- |
 | title                   	| string      	| NOT NULL          	|
 | message                 	| text        	| NOT NULL          	|
+| id_digest               	| string      	|                   	|
+| status                  	| integer     	| default: 1, NOT NULL|
 | user_id                 	| references   	| foreign_key: true 	|
 
 ### Association

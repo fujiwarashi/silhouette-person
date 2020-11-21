@@ -71,6 +71,7 @@
             <th class="table__col1"></th>
             <th class="table__col1"><b>作成時間</b></th>
             <td class="table__col3"><b>試験名</b></td>
+            <th class="table__col5"><b>公開</b></th>
             <th class="table__col6"><b>編集</b></th>
             <th class="table__col5"><b>削除</b></th>
           <tr>
@@ -78,7 +79,13 @@
           <tr>
             <th class="table__col1"><%= i + 1 %></th>
             <td class="table__col2"><%= l exam.created_at %></td>
-            <td class="table__col3"><%= link_to exam.title, exam_path(exam.id), class: :nav__btn %></td>
+            <td class="table__col3"><%= link_to exam.title, exam_path(exam.id_digest), class: :nav__btn %></td>
+            <th class="table__col5">
+            <% if exam.status == 1 %>
+            ○
+            <% else %>
+            ×
+            <% end %></th>
             <th class="table__col6"><%= link_to '編集', edit_exam_path(exam.id), class: :nav__btn %></th>
             <th class="table__col5"><%= link_to '削除', exam_path(exam.id), method: :delete, class: :nav__logout %></th>
           <tr>

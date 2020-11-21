@@ -26,6 +26,8 @@
             </div>
             <div class="side__width"></div>
           </div>
+          <%= f.radio_button :status, 1 %><span class="indispensable__open">公開</span>
+          <%= f.radio_button :status, 2 %><span class="indispensable__open">非公開</span>
           <div class="btn__contents">
             <%= f.submit "編集する", class: :form__btn %>
             <%=link_to 'もどる', user_path(current_user), class: :nav__logout %>
