@@ -24,6 +24,9 @@ Web試験アプリ。製作者が問題を作成、受験者が受験するこ�
 ## 実装した機能についてのGIFと説明
 	https://user-images.githubusercontent.com/72442462/99904331-82f74500-2d0d-11eb-96ab-be50e7e3fa43.gif
 
+	![ダウンロード](https://user-images.githubusercontent.com/72442462/99904416-fd27c980-2d0d-11eb-8a45-bb74afb25afc.gif)
+
+
 ## 実装予定の機能
 - 希望者へは受験終了時にメール自動送信機能
 - ジャンルを設けて公開試験にタグ機能
