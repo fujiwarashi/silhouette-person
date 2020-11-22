@@ -1,4 +1,7 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_question, only: [:show, :edit, :update, :destroy]
+
   def new
     @question_choice = QuestionChoice.new
   end
@@ -14,17 +17,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
-    @choices = @question.choices
   end
 
   def edit
-    @question = Question.find(params[:id])
     redirect_to root_path if @question.user_id != current_user.id
   end
 
   def update
-    @question = Question.find(params[:id])
     if @question.update(question_params)
       redirect_to question_path(params[:id])
     else
@@ -33,11 +32,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = Question.find(params[:id])
     if @question.user_id != current_user.id
       redirect_to root_path
     elsif @question.destroy
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user.id)
     end
   end
 
@@ -49,5 +47,13 @@ class QuestionsController < ApplicationController
 
   def question_choice_params
     params.require(:question_choice).permit(:content, :allocation_id, :image, answer_id: [:ans], text: [:tex] ).merge(user_id: current_user.id)
+  end
+
+  def set_question
+    if Question.exists?(id: params[:id])
+      @question = Question.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 end

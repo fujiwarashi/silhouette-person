@@ -21,7 +21,7 @@
             <th class="table__col6"><b><%= @question.allocation_id %></th>
             <th class="table__col6"><%= link_to "編集", edit_question_path(params[:id]), class: :nav__btn %></th>
           <tr>
-          <% @choices.each_with_index do |choice, i| %>
+          <% @question.choices.each_with_index do |choice, i| %>
           <tr>
             <th class="table__col1"><%= i + 1 %></th>
             <td class="table__col2"></td>

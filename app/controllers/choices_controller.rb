@@ -1,8 +1,9 @@
 class ChoicesController < ApplicationController
+  before_action :authenticate_user!
 
   def edit
-    @question = Question.where(user_id: params[:id])
-    @choice = Choice.where(question_id: params[:question_id])
+    @choice = Choice.find_by(id: params[:id])
+    redirect_to root_path if @choice.question.user_id != current_user.id
   end
 
   def update

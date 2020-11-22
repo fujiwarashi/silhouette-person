@@ -7,7 +7,7 @@
     <p class="caution">受験した試験、作った試験の受験状況、作った試験・問題がここに表示されます。</p>
     <div class="user__wrapper">
     
-      <% if Result.exists?(exam_id: @exam.ids) && Result.where.not(user_id: current_user.id) %>
+      <% if @results_not.exists?(exam_id: @exam.ids) %>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの試験の受験者一覧"%>
       </h2>
@@ -107,7 +107,7 @@
             <td class="table__col3"><b>問題文</b></td>
             <th class="table__col7"><b>配点</b></th>
             <th class="table__col6"><b>画像</b></th>
-            <th class="table__col6"><b>編集</b></th>
+            <th class="table__col6"><b>詳細</b></th>
             <th class="table__col5"><b>削除</b></th>
           <tr>
           <% @question.each_with_index do |question, i|%>
