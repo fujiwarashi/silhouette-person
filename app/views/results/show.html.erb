@@ -1,0 +1,57 @@
+<main class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"answer.png", class: :image__header__image %>
+      <p class="heading">
+        <%= @exam.title %>
+      </p>
+      <b><%= "回答者 【#{@result.user.name}】さん" %></b><br />
+      <div class="exam__body">
+        <div class="prototype__detail"><br>
+          <div class="exam__message" style="white-space:pre">
+            <%= simple_format(h(@exam.message))%>
+          </div>
+        </div>
+        <% score = 0 %><% conceded = 0 %>
+        <%= form_with model: @result, url:results_path(exam_id: params[:id]) do |f| %>
+            <% @exam_questions.each_with_index do |exam, i| %>
+              <ul class="question__lists">
+                  <div class="question__list">
+                  <div class="question__number__left">
+                    <span class="question__number"><%= "第#{i + 1}問"%></span></div>
+                    <div><%= simple_format(h(exam.question.content)) %></div>
+                    <div class="allocation__right"%><span class="question__allocation"><%= "#{exam.question.allocation_id}点"%></span></div>
+                  </div>
+              </ul>
+              <%= image_tag exam.question.image, class: :image__size if exam.question.image.attached? %>
+                <ul class="choice__lists">
+                  <div class="side__width"><div>
+                  <div class="choice__list">
+                    <%= f.collection_check_boxes :choice_ids, exam.question.choices, :id, :text %>
+                  </div>
+                  <div class="side__width"></div>
+                </ul>
+                  <%if @result.choices.where(question_id: exam.question_id).ids == exam.question.choices.where.not(answer_id: 1).ids %>
+                  <div><span class="answer__true">⭕️</span></div>
+                  <% score += exam.question.allocation_id %>
+                  <% else %>
+                  <div><span class="answer__false">×</span></div>
+                  <% conceded += exam.question.allocation_id %>
+                  <% end %><br />
+                  <div class="answer__list">
+                    <div><span class="answer__text">解答</span></div>
+                    <% exam.question.choices.where.not(answer_id: 1).each do |answer| %>
+                    <p class="caution"><%= answer.text %></p>
+                    <% end %>
+                  </div>
+            <% end %>
+          <div class="actions"><br />
+          <div class="score__allocation">採点結果<span class="score__integer"><%= score %></span>点 / 
+          <span class="allocation__integer"><%= conceded + score %></span>点満点</div><br /><br />
+            <%=link_to 'もどる', user_path(current_user), class: :nav__logout %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

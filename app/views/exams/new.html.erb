@@ -1,0 +1,43 @@
+<div class="main">
+  <div class="inner">
+    <div class="image__header">
+      <%= image_tag"exam.png", class: :image__header__image %><br><br>
+      <h2 class="heading">新規試験作成</h2><br>
+      <div class="form__wrapper">
+      <%= form_with model: @exam, url: exams_path(:exam_id) , local: true do |f| %>
+      <%= render 'devise/shared/error_messages', model: f.object %>
+        <div class="field">
+          <span class="indispensable">必須</span>
+          <%= f.text_area :title, id:"question_content",class: :ef__exam, rows:"1", cols:"50"%>
+          <%= f.label :title, "試験を命名して下さい" %><br />
+          <span class="focus_line"></span>
+        </div>
+        <div class="field">
+          <span class="indispensable__exam">必須</span>
+          <%= f.text_area :message, id:"question_content", class: :ef__exam, rows:"15", cols:"50", maxlength:"1024" %>
+          <%= f.label :message, "試験の説明文を入力して下さい" %><br />
+          <span class="focus_line"></span>
+        </div>
+          <br>作成した問題の中から試験に使用するものを選択して下さい<br>
+        <% if Question.exists?(user_id: current_user.id) %>
+          <div class="choice__lists">
+            <div class="side__width"><div>
+            <div class="choice__list__new">
+              <%= f.collection_check_boxes :question_ids, Question.where(user_id: current_user.id), :id, :content %>
+            </div>
+            <div class="side__width"></div>
+          </div>
+          <%= f.radio_button :status, 1 %><span class="indispensable__open">公開</span>
+          <%= f.radio_button :status, 2 %><span class="indispensable__open">非公開</span>
+          <div class="btn__contents">
+            <%= f.submit "作成する", class: :form__btn %>
+            <%=link_to 'もどる', root_path, class: :nav__logout %>
+          </div>
+        <% else %><br>
+          <h2 class="heading">※先に問題を作成して下さい</h2>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

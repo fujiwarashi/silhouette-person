@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  get 'exams/index'
+  root to: "exams#index"
+
+  resources :exams, only: [:new, :create, :show, :edit, :update, :destroy]
+
+  resources :questions, only: [:new, :create, :show, :edit, :destroy, :update] do
+    resources :choices, only: [:create, :edit, :update]
+  end
+
+  resources :results, only: [:new, :create, :show, :destroy]
+  resources :users, only: :show
 end

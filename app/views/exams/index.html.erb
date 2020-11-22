@@ -1,0 +1,41 @@
+<main class="main fadeIn">
+  <div class="inner">
+    <div class="main__home">
+      <%= image_tag "main.image.png", class: :main__image %>
+    </div>
+    <div class="heading">INFOMATION</div><br />
+    <div class="information__main fadeIn">
+      <p>2020/11/20</p>
+      <p>サーバーメンテナンスが終了しました</p>
+      <br>
+      <p>2020/11/5</p>
+      <p>サーバーメンテナンスのお知らせ</p>
+      <br>
+    </div>
+    <div class="service fadeIn">
+      <%= link_to image_tag("service.png", class: :service__image), root_path %>
+    </div>
+    <div class="service__info fadeIn">
+      <%= link_to image_tag("survice.corporation.png", class: :service__info__image), root_path %>
+      <%= link_to image_tag("survice.individual.png", class: :service__info__image), root_path %>
+    </div><br />
+    <div class="heading">INDEX</div><br />
+    <div class="information__main fadeIn">
+      <p class"caution">- 公開されている試験 -</p>
+      <% if @exams.present?%>
+        <ul class="exam__index">
+        <% @exams.each do |exam| %>
+          <li class='exam__index__link'>
+            <%= link_to exam_path(exam.id_digest) do %>
+              <h3 class='exam__btn'>
+                <%= exam.title %>
+              </h3>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      <% else %>
+      <p class="heading">公開されている試験はありません</p>
+      <% end %>
+  </div>
+</main>
