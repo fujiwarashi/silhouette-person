@@ -2,10 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Exam, type: :model do
   before do
-    # @exam = FactoryBot.build(:exam)
-    exam_question = FactoryBot.build(:exam_question)
-    @exam = exam_question.exam
-    binding.pry
+    FactoryBot.create(:question)
+    @exam = FactoryBot.build(:exam)
   end
 
   describe '試験作成' do

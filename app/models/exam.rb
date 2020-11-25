@@ -9,7 +9,8 @@ class Exam < ApplicationRecord
     validates :message
     validates :question_ids
   end
-  
+
+  # attr_accessor :question_ids
 
   after_save :create_id_digest
 
