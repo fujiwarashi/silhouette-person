@@ -7,26 +7,26 @@
           <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
           <%= render 'devise/shared/error_messages', model: f.object %>
           <div class="field">
-            <span class="indispensable__new">必須</span>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: :ef, :size=>"50" %>
+            <span class="indispensable">必須</span>
+            <%= f.email_field :email, autofocus: true, id:"email", class: :ef, :size=>"50" %>
             <%= f.label :email, "メールアドレス"%><br />
             <span class="focus_line"></span>
           </div>
           <div class="field">
-            <span class="indispensable__new">必須</span>
-            <%= f.text_field :name, class: :ef, :size=>"50" %>
+            <span class="indispensable">必須</span>
+            <%= f.text_field :name, class: :ef, id:"name", :size=>"50" %>
             <%= f.label :name, "登録名・法人名" %><br />
             <span class="focus_line"></span>
           </div>
           <div class="field">
-            <span class="indispensable__new">必須</span>
-            <%= f.password_field :password, autocomplete: "new-password", class: :ef, :size=>"50" %>
+            <span class="indispensable">必須</span>
+            <%= f.password_field :password, class: :ef, id:"password", :size=>"50" %>
             <%= f.label :password, "パスワード" %><br />
             <span class="focus_line"></span>
           </div>
           <div class="field">
-            <span class="indispensable__new">必須</span>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: :ef, :size=>"50" %>
+            <span class="indispensable">必須</span>
+            <%= f.password_field :password_confirmation, class: :ef, id:"password_confirmation", :size=>"50" %>
             <%= f.label :password_confirmation, "パスワード再入力" %><br />
             <span class="focus_line"></span>
           </div>

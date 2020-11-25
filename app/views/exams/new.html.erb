@@ -13,7 +13,7 @@
           <span class="focus_line"></span>
         </div>
         <div class="field">
-          <span class="indispensable__exam">必須</span>
+          <span class="indispensable">必須</span>
           <%= f.text_area :message, id:"question_content", class: :ef__exam, rows:"15", cols:"50", maxlength:"1024" %>
           <%= f.label :message, "試験の説明文を入力して下さい" %><br />
           <span class="focus_line"></span>
@@ -23,7 +23,7 @@
           <div class="choice__lists">
             <div class="side__width"><div>
             <div class="choice__list__new">
-              <%= f.collection_check_boxes :question_ids, Question.where(user_id: current_user.id), :id, :content %>
+              <%= f.collection_check_boxes :question_ids, Question.where(user_id: current_user.id), :id, :content, include_hidden: false %>
             </div>
             <div class="side__width"></div>
           </div>

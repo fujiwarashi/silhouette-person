@@ -1,5 +1,6 @@
 class ChoicesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_choice, only: :edit
 
   def edit
     @choice = Choice.find_by(id: params[:id])
@@ -19,5 +20,11 @@ class ChoicesController < ApplicationController
 
   def choice_params
     params.require(:choice).permit(:answer_id, :text)
+  end
+
+  def set_choice
+    unless Choice.exists?(id: params[:id])
+      redirect_to root_path
+    end
   end
 end

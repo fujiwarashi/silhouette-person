@@ -9,6 +9,7 @@ class Exam < ApplicationRecord
     validates :message
     validates :question_ids
   end
+  
 
   after_save :create_id_digest
 

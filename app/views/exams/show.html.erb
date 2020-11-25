@@ -9,7 +9,7 @@
       <div class="exam__body">
         <div class="prototype__detail"><br>
           <p class="information__main">- 問題説明 -</p>
-          <div class="exam__message" style="white-space:pre">
+          <div class="exam__message">
             <%= simple_format(h(@exam.message))%>
           </div>
           <p class="information__main">下にスクロールすると開始します</p>
@@ -30,7 +30,7 @@
                   <ul class="choice__lists fadeIn">
                     <div class="side__width"><div>
                     <div class="choice__list">
-                      <%= f.collection_check_boxes :choice_ids, exam.question.choices, :id, :text %>
+                      <%= f.collection_check_boxes :choice_ids, exam.question.choices.shuffle, :id, :text %>
                     </div>
                     <div class="side__width"></div>
                   </ul>

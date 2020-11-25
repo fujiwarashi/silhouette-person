@@ -22,10 +22,30 @@ Web試験アプリ。製作者が問題を作成、受験者が受験するこ�
 <!-- スプレッドシートにまとめた要件定義を、マークダウンで記述しなおしましょう。 -->
 
 ## 実装した機能についてのGIFと説明
-	https://user-images.githubusercontent.com/72442462/99904331-82f74500-2d0d-11eb-96ab-be50e7e3fa43.gif
+![22ce187fd91b4720507a80ab20fef50a](https://user-images.githubusercontent.com/72442462/99980136-3d10ae80-2deb-11eb-9c08-579755f5b321.gif)
 
-	![ダウンロード](https://user-images.githubusercontent.com/72442462/99904416-fd27c980-2d0d-11eb-8a45-bb74afb25afc.gif)
 
+- 問題機能
+企業がそれぞれの会社にあった問題を用意することが出来る機能です。
+写真や配点も自分で用意でき、四択だけでなく一問多答にも対応しています。
+![d82bfb2c155db06b1a0c8521c0c7f1b9](https://user-images.githubusercontent.com/72442462/99981100-4ea68600-2dec-11eb-9ca7-a562f3ec4027.gif)
+
+
+- 試験機能
+問題を組み合わせることで一つの試験として完成することができます。
+作成時に作った問題の中から選ぶことができ、公開・非公開設定ができます。
+試験ページは暗号化しておりid番号で遷移できないようになっています。
+![4b913a9913561f75ac73855572c996d9](https://user-images.githubusercontent.com/72442462/99983932-d5a92d80-2def-11eb-87fa-ba84eac5e85d.gif)
+
+
+- 結果機能
+試験の結果をすぐに表示する機能です。視覚的にわかりやすい正誤表記に加え、配点を出力することで合計点も表示されるようになっています。
+![2d251cc8a6fe248006ebe31bb838bf68](https://user-images.githubusercontent.com/72442462/99986264-4e10ee00-2df2-11eb-8806-4132ac66fe1a.gif)
+
+
+- 履歴機能
+試験を作った側、受験した側それぞれが今までの履歴を閲覧できるようになっています。また試験や問題の修正・削除を行うこともできるようになっています。
+![50b325a25cb9d0139ce755b8f2e805a9](https://user-images.githubusercontent.com/72442462/99985972-f7a3af80-2df1-11eb-80b8-9971566c1ef4.gif)
 
 ## 実装予定の機能
 - 希望者へは受験終了時にメール自動送信機能
@@ -33,7 +53,7 @@ Web試験アプリ。製作者が問題を作成、受験者が受験するこ�
 - 非公開ユーザー向けにURLのQRコード発行機能
 
 ## データベース設計
-	<!-- ER図等を添付しましょう。 -->
+![76474DA6-4B03-4ABD-9938-9726B09D8C6C](https://user-images.githubusercontent.com/72442462/99974950-f1f39d00-2de4-11eb-886b-66e436c1fcca.jpeg)
   
 
 ## ローカルでの動作方法

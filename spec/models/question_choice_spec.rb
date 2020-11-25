@@ -13,15 +13,20 @@ RSpec.describe QuestionChoice, type: :model do
     end
 
     context '新規問題作成がうまくいかないとき' do
-      it 'タイトルが必須でないといけない' do
+      it '問題文が必須でないといけない' do
         @question_choice.content = ''
         @question_choice.valid?
-        expect(@question_choice.errors.full_messages).to include("問題名を入力してください")
+        expect(@question_choice.errors.full_messages).to include("問題文を入力してください")
       end
-      it 'メッセージが必須でないといけない' do
-        @question_choice.text = ''
+      it '選択肢が必須でないといけない' do
+        @question_choice.text[0][:tex] = ''
         @question_choice.valid?
-        expect(@question_choice.errors.full_messages).to include("説明文を入力してください")
+        expect(@question_choice.errors.full_messages).to include("選択肢1が選択されていません")
+      end
+      it '正解が選択されていないといけない' do
+        @question_choice.answer_id[0][:ans] = '{"ans"=>"1"}'
+        @question_choice.valid?
+        expect(@question_choice.errors.full_messages).to include()
       end
     end
   end

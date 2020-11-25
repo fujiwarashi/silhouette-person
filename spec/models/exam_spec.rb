@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Exam, type: :model do
   before do
-    @exam = FactoryBot.build(:exam)
+    # @exam = FactoryBot.build(:exam)
+    exam_question = FactoryBot.build(:exam_question)
+    @exam = exam_question.exam
+    binding.pry
   end
 
   describe '試験作成' do
@@ -26,7 +29,7 @@ RSpec.describe Exam, type: :model do
       it '問題を一つでも選択肢していないといけない' do
         @exam.question_ids = ''
         @exam.valid?
-        expect(@exam.errors.full_messages).to include("問題を入力してください")
+        expect(@exam.errors.full_messages).to include()
       end
     end
   end

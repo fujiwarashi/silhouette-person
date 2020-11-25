@@ -7,12 +7,12 @@
         <%= form_with model:@question_choice, url: questions_path, local: true do |f| %>
         <%= render 'devise/shared/error_messages', model: f.object %>
         <div class="question__image">
-        <label for="question_image" class="nav__btn">画像を投稿する
-            <%= f.file_field :image, id:"question_image"%></label>
+          <label for="question_image" id="question_image", class="nav__btn">画像を投稿する
+          <%= f.file_field :image, id:"question_image"%></label>
           <div id="image-list", class="image__preview"></div>
         </div>
         <div class="field">
-          <span class="indispensable__question">必須</span>
+          <span class="indispensable">必須</span>
           <%= f.text_area :content, id:"question_content",class: :ef__question, rows:"5", cols:"55"%>
           <%= f.label :content, "問題文" %>
           <span class="focus_line"></span>
@@ -20,31 +20,31 @@
           <div class="indispensable">配点</div>
         </div>
         <div class="field">
-          <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
+          <span class="indispensable">必須</span>
+          <%= f.text_field "text[][tex]", id:"answer1", class: :ef__question, :size=>"52" %>
           <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
+          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer1"}) %>
           <span class="focus_line"></span>
         </div>
         <div class="field">
-          <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
+          <span class="indispensable">必須</span>
+          <%= f.text_field "text[][tex]", id:"answer2", class: :ef__question, :size=>"52" %>
           <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
+          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer2"}) %>
           <span class="focus_line"></span>
         </div>
         <div class="field">
-          <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
+          <span class="indispensable">必須</span>
+          <%= f.text_field "text[][tex]", id:"answer3", class: :ef__question, :size=>"52" %>
           <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
+          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer3"}) %>
           <span class="focus_line"></span>
         </div>
         <div class="field">
-          <span class="indispensable__new">必須</span>
-          <%= f.text_field "text[][tex]", class: :ef__question, :size=>"52" %>
+          <span class="indispensable">必須</span>
+          <%= f.text_field "text[][tex]", id:"answer4", class: :ef__question, :size=>"52" %>
           <%= f.label "text[][tex]", "選択肢" %>
-          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer"}) %>
+          <%= f.collection_select("answer_id[][ans]", Answer.all, :id, :name, {}, {class: :ef__exam, id:"answer4"}) %>
           <span class="focus_line"></span>
         </div>
       <div class="sell-btn-contents">

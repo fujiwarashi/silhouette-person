@@ -21,4 +21,5 @@ ja:
         content: 問題文
         allocation: 配点
         text: 選択肢
-        answer: 正解
+        answer_id: 正解
+        ans: 選択肢

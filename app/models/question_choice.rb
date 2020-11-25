@@ -7,12 +7,19 @@ class QuestionChoice
   end
 
   validate :text_validation
+  validate :answer_validation
 
   def text_validation
     text.each_with_index do |tex, i|
       if tex[:tex] == ""
         errors.add(:text, "#{i += 1}が選択されていません")
       end
+    end
+  end
+
+  def answer_validation
+    unless answer_id.include?("ans"=>"2")
+        errors.add(:answer_id, "が選択されていません")
     end
   end
 

@@ -10,12 +10,12 @@
           <%= flash[:alert] %>
         </div>
         <div class="field">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: :ef, :size=>"50" %>
+          <%= f.email_field :email, autofocus: true, class: :ef, id:"email", :size=>"50" %>
           <%= f.label :email, "メールアドレス"%><br />
           <span class="focus_line"></span>
         </div>
         <div class="field">
-          <%= f.password_field :password, autocomplete: "new-password", class: :ef, :size=>"50" %>
+          <%= f.password_field :password, class: :ef, id:"password", :size=>"50" %>
           <%= f.label :password, "パスワード" %><br />
           <span class="focus_line"></span>
         </div>
