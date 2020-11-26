@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: silhouette_person_production
-  username: silhouette_person
-  password: <%= ENV['SILHOUETTE_PERSON_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
