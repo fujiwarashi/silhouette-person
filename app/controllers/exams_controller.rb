@@ -35,10 +35,8 @@ class ExamsController < ApplicationController
 
   def create
     @exam = Exam.new(exam_params)
-    if @exam.status == 2
-      @exam.save
-    elsif
-      @exam.save
+    if @exam.status == 2 && @exam.save
+    elsif @exam.save
       redirect_to root_path    
     else
       render :new
