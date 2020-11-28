@@ -9,6 +9,9 @@ Web試験アプリ。製作者が問題を作成、受験者が受験するこ�
 https://silhouette-person.herokuapp.com/
 （※AWSにてデプロイ予定）
 
+## BASIC認証
+YF-21 / 8631089
+
 ## テスト用アカウント
 #### テストアカウント1 / password
 test@test.com / z11111
