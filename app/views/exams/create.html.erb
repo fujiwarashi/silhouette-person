@@ -4,7 +4,7 @@
       <%= image_tag"finish.png", class: :image__header__image %>
       <p class="heading">作成した試験は非公開です</p>
       <%= image_tag("exam_message.png", class: :finish) %><br />
-      <span class="caution">http://localhost:3000/exams/</span><span><%= @exam.id_digest %></span><br />
+      <span class="caution">http://54.95.127.63/exams/</span><span><%= @exam.id_digest %></span><br />
         <%=link_to '試験ページ', exam_path(@exam.id_digest) , class: :nav__btn %>
         <%=link_to 'もどる', root_path, class: :nav__logout %>
     </div>

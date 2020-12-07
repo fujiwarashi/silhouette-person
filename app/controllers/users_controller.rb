@@ -7,9 +7,9 @@ class UsersController < ApplicationController
       @user = user
       @exam = user.exams.order(id: "DESC")
       @question = user.questions.order(id: "DESC")
-      @result = user.results.order(id: "DESC")
-      results = Result.where(exam_id: user.exams)
-      @results_not = results.where.not(user_id: user.id).order(id: "DESC")
+      result = user.results
+      @result_not = result.where.not(exam_id: @exam.ids).order(id: "DESC")
+      @results = Result.where(exam_id: user.exams).order(id: "DESC")
     else
       redirect_to root_path
     end

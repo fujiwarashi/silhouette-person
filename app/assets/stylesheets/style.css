@@ -445,7 +445,7 @@ a {
 	display: inline-block;
 	margin-right: 30px;
   padding: 10px 10px 10px 60px;
-	cursor: pointer;
+  cursor: pointer;
 }
 .choice__lists label::before {
 	position: absolute;
@@ -838,6 +838,9 @@ input[type="file"] {
 
  /* スマホ表示 */
 @media (max-width: 599px) {
+  .indispensable__open {
+    font-size: 0.8em;
+  }
   .logo {
     width: 120px;
   }
@@ -857,6 +860,9 @@ input[type="file"] {
   .nav__logout {
     width: auto;
     font-size: 0.1em;
+  }
+  .ef__exam {
+    width: 90vw;
   }
 
   .form__btn {
@@ -881,9 +887,25 @@ input[type="file"] {
     font-size: 0.5em;
     margin: 100px 0 5px;
   }
+  .question__number__left {
+    width: 100vw;
+  }
   
   .choice__list {
-    font-size: 0.9em;
+    font-size: 0.7em;
+  }
+  .choice__list__new {
+    font-size: 0.7em;
+  }
+  .side__width {
+    width: 90vw;
+  }
+
+  .choice__lists label::before {
+    width: 10px;
+    height: 10px;
+    content: '';
+    border: 1px solid #776ed2;
   }
   .exam__btn{
   font-size: 0.8em;

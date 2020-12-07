@@ -7,7 +7,7 @@
     <p class="caution">受験した試験、作った試験の受験状況、作った試験・問題がここに表示されます。</p>
     <div class="user__wrapper">
     
-      <% if @results_not.exists?(exam_id: @exam.ids) %>
+      <% if @results.present? %>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの試験の受験者一覧"%>
       </h2>
@@ -21,7 +21,7 @@
             <th class="table__col6"><b>解答</b></th>
             <th class="table__col5"><b>削除</b></th>
           <tr>
-          <% @results_not.each_with_index do |results, i| %>
+          <% @results.each_with_index do |results, i| %>
           <tr>
             <th class="table__col1"><%= i + 1 %></th>
             <td class="table__col2"><%= l results.created_at %></td>
@@ -35,7 +35,7 @@
       </table>
       <% end %>
 
-      <% if @result.present? %>
+      <% if @result_not.present? %>
       <h2 class="user__heading">
         <%= "#{@user.name}さんの受験情報"%>
       </h2>
@@ -48,7 +48,7 @@
             <td class="table__col4"><b>作成者一覧</b></td>
             <th class="table__col6"><b>解答</b></th>
           <tr>
-          <% @result.each_with_index do |result, i| %>
+          <% @result_not.each_with_index do |result, i| %>
           <tr>
             <th class="table__col1"><%= i + 1 %></th>
             <td class="table__col2"><%= l result.created_at %></td>
